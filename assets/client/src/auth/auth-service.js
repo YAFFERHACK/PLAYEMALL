@@ -15,23 +15,32 @@ class AuthService {
       console.log('entra por el then');
       console.log(response.data)})
     .catch((err)=>{
-      console.log('entra por el catch');
+      console.log(err.response.data.message, '<---');
     })
   }
 
   loggedin = () => {
     return this.service.get('/loggedin')
-    .then(response => response.data)
+    .then(response => console.log(response.data))
+    .catch((err)=>{
+      console.log(err.response.data.message);
+    })
   }
 
   login = (username, password) => {
     return this.service.post('/login', {username, password})
-    .then(response => response.data)
+    .then(response => console.log(response.data))
+    .catch((err)=>{
+      console.log(err.response.data.message);
+    })
   }
   
   logout = () => {
     return this.service.post('/logout', {})
-    .then(response => response.data)
+    .then(response => console.log(response.data))
+    .catch((err)=>{
+      console.log(err.response.data.message)
+    })
   }
 
 
