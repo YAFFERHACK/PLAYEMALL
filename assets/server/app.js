@@ -49,8 +49,8 @@ app.use(session({
 require('./passport')(app);
 
 
-const authRoutes = require('./routes/auth');
-app.use('/auth', authRoutes);
+const routeIndex = require('./routes/index');
+app.use('/', routeIndex);
 
 
 app.use((req, res) => {
