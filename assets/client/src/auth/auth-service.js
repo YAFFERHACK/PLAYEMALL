@@ -15,12 +15,8 @@ class AuthService {
       console.log('entra por el then');
       console.log(response.data)})
     .catch((err)=>{
-<<<<<<< HEAD
-      console.log(err.response.data.message, '<---');
-=======
       console.log('entra por el catch');
-      console.log(err);
->>>>>>> 89c83f808f319c86b1da3fa8ca3eac483032ff8a
+      console.log(err.response.data.message, '<---');
     })
   }
 
