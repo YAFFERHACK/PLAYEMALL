@@ -9,13 +9,18 @@ class AuthService {
     this.service = service;
   }
 
-  signup = (username, password, campus, course) => {
-    return this.service.post('/signup', {username, password, campus, course})
+  signup = (username, password, city) => {
+    return this.service.post('/signup', {username, password, city})
     .then((response) => {
       console.log('entra por el then');
       console.log(response.data)})
     .catch((err)=>{
+<<<<<<< HEAD
       console.log(err.response.data.message, '<---');
+=======
+      console.log('entra por el catch');
+      console.log(err);
+>>>>>>> 89c83f808f319c86b1da3fa8ca3eac483032ff8a
     })
   }
 

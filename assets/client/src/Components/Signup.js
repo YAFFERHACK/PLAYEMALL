@@ -6,7 +6,7 @@ import { Link, Redirect } from 'react-router-dom';
 class Signup extends Component {
   constructor(props){
     super(props);
-    this.state = { username: '', password: '', campus: '', course: '', redirect: false};
+    this.state = { username: '', password: '', city: '', redirect: false};
     this.service = new AuthService();
   }
 
@@ -14,18 +14,17 @@ class Signup extends Component {
     event.preventDefault();
     const username = this.state.username;
     const password = this.state.password;
-    const campus = this.state.campus;
-    const course = this.state.course;
+    const city     = this.state.city;
+    // const course = this.state.course;
 
   
-    this.service.signup(username, password, campus, course)
+    this.service.signup(username, password, city)
     .then( response => {
         this.setState({
             ...this.state,
             username: "", 
             password: "",
-            campus: "",
-            course: "",
+            city: "",
             redirect: true
         });
         this.props.getUser(response)
@@ -55,11 +54,11 @@ class Signup extends Component {
           <label>Password:</label>
           <textarea name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
 
-          <label>Campus:</label>
-          <textarea name="campus" value={this.state.campus} onChange={ e => this.handleChange(e)} />
+          <label>City:</label>
+          <textarea name="city" value={this.state.city} onChange={ e => this.handleChange(e)} />
 
-          <label>Course:</label>
-          <textarea name="course" value={this.state.course} onChange={ e => this.handleChange(e)} />
+          {/* <label>Course:</label>
+          <textarea name="course" value={this.state.course} onChange={ e => this.handleChange(e)} /> */}
           
           <input type="submit" value="Signup" />
         </form>
