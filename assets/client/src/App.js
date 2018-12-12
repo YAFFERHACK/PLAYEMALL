@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';import { Switch, Route, Link } from "react-router-dom";
+import './App.css';
+import { Switch, Route, Link } from "react-router-dom";
 import Home from "./Components/Home"
 import Login from './Components/Login';
 import Signup from './Components/Signup';
-import Profile from './Components/Profile';
+import Profile from './Components/Profile/Profile';
+import SingleGameInfo from './Components/SingleGameInfo';
 
 
 class App extends Component {
@@ -26,7 +28,7 @@ class App extends Component {
           <Route exact path='/login' render={() => <Login getUser={this.getTheUser}/>}/>
           <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>
           <Route exact path='/profile' render={() => <Profile getUser={this.getTheUser}/>}/>
-
+          <Route exact path='/gameinfo/' component={SingleGameInfo}/>
         </Switch>
       </div>
     );
