@@ -4,13 +4,20 @@
 // $ node bin/seeds.js
 
 const mongoose = require("mongoose");
+require('dotenv').config();
 const bcrypt = require("bcrypt");
-const User = require("../models/User");
+const User = require("../models/User/User.js");
+// const Post = require("../models/PostModel/PostModel");
+// const Comment = require("../models/CommentModel/CommentModel");
+// const SingleGame = require("../models/SingleGameModel/SingleGameModel");
+// const Collection = require("../models/CollectionModel/CollectionModel");
+
+
 
 const bcryptSalt = 10;
 
 mongoose
-  .connect('mongodb://localhost/lab-profile-app', {useNewUrlParser: true})
+  .connect(process.env.DBLOCALPATH, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -20,17 +27,18 @@ mongoose
 
 let users = [
   {
-    username: "alice",
-    password: bcrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt)),
-    campus: "Madrid",
-    course: "WebDev"
+    username: "FerGamer",
+    password: bcrypt.hashSync("FerGamer", bcrypt.genSaltSync(bcryptSalt)),
+    city: "Sevilla",
+    profileImg: "",
   },
   {
-    username: "bob",
-    password: bcrypt.hashSync("bob", bcrypt.genSaltSync(bcryptSalt)),
-    campus: "Miami",
-    course: "WebDev"
-  }
+    username: "YMyers",
+    password: bcrypt.hashSync("YMyers", bcrypt.genSaltSync(bcryptSalt)),
+    city: "Madrid",
+    profileImg: "",
+  },
+  
 ]
 
 User.deleteMany()
