@@ -6,6 +6,7 @@ import Home from "./Components/Home"
 import Login from './Components/Login';
 import Signup from './Components/Signup';
 import Profile from './Components/Profile';
+import SingleGameInfo from './Components/SingleGameInfo';
 
 
 class App extends Component {
@@ -27,7 +28,7 @@ class App extends Component {
           <Route exact path='/login' render={() => <Login getUser={this.getTheUser}/>}/>
           <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>
           <Route exact path='/profile' render={() => <Profile getUser={this.getTheUser}/>}/>
-
+          <Route exact path='/gameinfo/:id' render ={()=> <SingleGameInfo/>}/>
         </Switch>
       </div>
     );
