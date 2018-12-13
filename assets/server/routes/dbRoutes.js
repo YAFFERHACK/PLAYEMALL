@@ -49,7 +49,7 @@ router.get('/gameinfo/:id', (req, res) => {
         fields: '*',
         expand:['genres','platforms', 'publishers'],
         limit: 20,
-        search: 'battlefield'
+        // search: 'battlefield'
     })
         .then((response) => {
             res.status(200).json(response.body);
