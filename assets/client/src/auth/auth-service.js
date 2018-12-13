@@ -24,7 +24,7 @@ class AuthService {
     return this.service.get('/loggedin')
     .then(response => console.log(response.data))
     .catch((err)=>{
-      console.log(err.response.data.message);
+      // console.log(err.response.data.message);
     });
   };
 
@@ -32,7 +32,7 @@ class AuthService {
     return this.service.post('/login', {username, password})
     .then(response => console.log(response.data))
     .catch((err)=>{
-      console.log(err.response.data.message);
+      // console.log(err.response.data.message);
     })
   }
   
