@@ -3,13 +3,13 @@ import React, { Component } from "react";
 
 
 class Home extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
   render() {
-    console.log(this.props.username);
+    console.log(this.props.user)
     return (
       <div>
         <h1>Play 'Em All {this.props.username}</h1>
@@ -19,7 +19,7 @@ class Home extends Component {
         <Link to={`/signup/`}>
           <button>signup</button>
         </Link>
-        <Link to={`/gameinfo/`}>
+        <Link to={`/gameinfo`}>
           <button>gameinfo</button>
         </Link>
       </div>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import AuthService from "../auth/auth-service";
+import AuthService from "../../auth/auth-service";
 import { Link, Redirect } from "react-router-dom";
 
 class Signup extends Component {
@@ -70,7 +70,7 @@ class Signup extends Component {
           >
             <option>A Coruña</option>
             <option>Alava</option>
-            <option>Albaete</option>
+            <option>Albacete</option>
             <option>Alicante</option>
             <option>Almería</option>
             <option>Asturias</option>
