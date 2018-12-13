@@ -66,17 +66,17 @@ export default class SingleGameInfo extends Component {
             } else { firstReleaseDate = 'not available' }
 
             let cover = null;
-            if (this.state.gameInfo[0].cover.cloudinary_id !== null) {
+            if (this.state.gameInfo[0].cover !== undefined) {
                 cover = `//images.igdb.com/igdb/image/upload/t_screenshot_med/${this.state.gameInfo[0].cover.cloudinary_id}.jpg`;
             } else { cover = `https://shop.purgatoryresort.com/bundles/spotliowebappfront/purgatoryresort/images/photo_not_available.jpg` }
 
             let screenshot = null;
-            if (this.state.gameInfo[0].screenshots[0].cloudinary_id !== null) {
+            if (this.state.gameInfo[0].screenshots !== undefined ) {
                 screenshot = `//images.igdb.com/igdb/image/upload/t_screenshot_med/${this.state.gameInfo[0].screenshots[0].cloudinary_id}.jpg`
             } else { screenshot = `https://shop.purgatoryresort.com/bundles/spotliowebappfront/purgatoryresort/images/photo_not_available.jpg` }
 
             let video = null;
-            if (this.state.gameInfo[0].videos[0].video_id !== null) {
+            if (this.state.gameInfo[0].videos !== undefined) {
                 video = `https://www.youtube.com/embed/${this.state.gameInfo[0].videos[0].video_id}`;
             } else { video = 'https://www.youtube.com/embed/tgbNymZ7vqY' }
 

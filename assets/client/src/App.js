@@ -4,7 +4,7 @@ import "./App.css";
 import { Switch, Route, Link } from "react-router-dom";
 import Home from "./Components/Home";
 import Login from "./Components/UserLogin/Login";
-import Signup from "./Components/UserLogin/Signup";
+import Signup from "./Components/Signup";
 import Profile from "./Components/Profile/Profile";
 import SingleGameInfo from "./Components/SingleGameInfo";
 import ProfileEdit from "./Components/Profile/ProfileEdit";
@@ -21,7 +21,9 @@ class App extends Component {
   Getloggedin = () => {
     this.auth
       .loggedin()
-      .then(user => this.setState({ ...this.state, loggedInUser: user }));
+      .then(user => {
+        console.log(user);
+        this.setState({ ...this.state, loggedInUser: user })});
   };
 
   getTheUser = userObj => {

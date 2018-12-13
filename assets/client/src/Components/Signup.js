@@ -30,18 +30,18 @@ class Signup extends Component {
           redirect: true
         });
         this.props.getUser(response)
- 
+
       })
       .catch(error => console.log(error))
   }
 
   handleChange = (event) => {
     const { name, value } = event.target;
-    if(name == "photo") {
-      this.setState({...this.state, photo: event.target.files[0]})
+    if (name == "photo") {
+      this.setState({ ...this.state, photo: event.target.files[0] })
     } else {
-      this.setState({...this.state, [name]: value});
-}
+      this.setState({ ...this.state, [name]: value });
+    }
   }
 
 
@@ -59,11 +59,73 @@ class Signup extends Component {
           <label>Password:</label>
           <textarea name="password" value={this.state.password} onChange={e => this.handleChange(e)} />
 
+          {/* <label>City:</label>
+          <textarea name="city" value={this.state.city} onChange={e => this.handleChange(e)} /> */}
+
           <label>City:</label>
-          <textarea name="city" value={this.state.city} onChange={e => this.handleChange(e)} />
+          <select
+            name="city"
+            value={this.state.city}
+            onChange={e => this.handleChange(e)}
+          >
+            <option>A Coruña</option>
+            <option>Alava</option>
+            <option>Albacete</option>
+            <option>Alicante</option>
+            <option>Almería</option>
+            <option>Asturias</option>
+            <option>Avila</option>
+            <option>Badajoz</option>
+            <option>Barcelona</option>
+            <option>Burgos</option>
+            <option>Cáceres</option>
+            <option>Cádiz</option>
+            <option>Cantabria</option>
+            <option>Castellón</option>
+            <option>Ceuta</option>
+            <option>Ciudad Real</option>
+            <option>Córdoba</option>
+            <option>Cuenca</option>
+            <option>Formentera</option>
+            <option>Girona</option>
+            <option>Granada</option>
+            <option>Guadalajara</option>
+            <option>Guipuzcoa</option>
+            <option>Huelva</option>
+            <option>Huesca</option>
+            <option>Ibiza</option>
+            <option>Jaén</option>
+            <option>La Rioja</option>
+            <option>Las Palmas de Gran Canaria</option>
+            <option>León</option>
+            <option>Lérida</option>
+            <option>Lugo</option>
+            <option>Madrid</option>
+            <option>Málaga</option>
+            <option>Mallorca</option>
+            <option>Menorca</option>
+            <option>Murcia</option>
+            <option>Navarra</option>
+            <option>Orense</option>
+            <option>Palencia</option>
+            <option>Pontevedra</option>
+            <option>Salamanca</option>
+            <option>Santa Cruz de Tenerife</option>
+            <option>Segovia</option>
+            <option>Sevilla</option>
+            <option>Soria</option>
+            <option>Tarragona</option>
+            <option>Teruel</option>
+            <option>Toledo</option>
+            <option>Valencia</option>
+            <option>Valladolid</option>
+            <option>Vizcaya</option>
+            <option>Zamora</option>
+            <option>Zaragoza</option>
+          </select>
 
           <input type="file" name="photo" onChange={(e) => this.handleChange(e)} /> <br />
-          <button type="submit">Save new profile picture</button>
+          {/* <button type="submit">Save new profile picture</button> */}
 
           <input type="submit" value="Signup" />
         </form>
