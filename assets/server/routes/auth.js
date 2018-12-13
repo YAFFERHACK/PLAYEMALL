@@ -65,8 +65,10 @@ router.post('/login', (req, res, next) => {
         })(req, res, next);
     });
 
-router.post('/signup', (req, res, next) => {
+router.post('/signup', parser.single("photo"), (req, res, next) => {
   const {username, password, city} = req.body;
+  const profileImg = req.file ? req.file.url : '...';
+  console.log(req.file);
 
   if (!username || !password) {
     res.status(400).json({ message: 'Provide username and password' });
@@ -97,6 +99,7 @@ router.post('/signup', (req, res, next) => {
           username:username,
           password: hashPass,
           city: city,
+          profileImg
       });
 
       newUser.save(err => {
