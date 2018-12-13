@@ -1,5 +1,5 @@
 const express = require("express");
-const passport = require('passport');
+const passport = require("passport");
 const router = express.Router();
 const User = require("../models/User/User.js");
 const parser = require("../config/cloudinary");
@@ -66,80 +66,84 @@ router.post('/login', (req, res, next) => {
     });
 
 router.post('/signup', parser.single("photo"), (req, res, next) => {
-  const {username, password, city} = req.body;
-  const profileImg = req.file ? req.file.url : '...';
-  console.log(req.file);
+    const { username, password, city } = req.body;
+    const profileImg = req.file ? req.file.url : '...';
+    console.log(req.file);
 
-  if (!username || !password) {
-    res.status(400).json({ message: 'Provide username and password' });
-    return;
-  }
+    if (!username || !password) {
+        res.status(400).json({ message: "Provide username and password" });
+        return;
+    }
 
-  if(password.length < 7){
-      res.status(400).json({ message: 'Please make your password at least 8 characters long for security purposes.' });
-      return;
-  }
+    if (password.length < 7) {
+        res
+            .status(400)
+            .json({
+                message:
+                    "Please make your password at least 8 characters long for security purposes."
+            });
+        return;
+    }
 
-  User.findOne({ username }, (err, foundUser) => {
+    User.findOne({ username }, (err, foundUser) => {
+        if (err) {
+            res.status(500).json({ message: "Username check went bad." });
+            return;
+        }
 
-      if(err){
-          res.status(500).json({message: "Username check went bad."});
-          return;
-      }
+        if (foundUser) {
+            res.status(400).json({ message: "Username taken. Choose another one." });
+            return;
+        }
 
-      if (foundUser) {
-          res.status(400).json({ message: 'Username taken. Choose another one.' });
-          return;
-      }
+        const salt = bcrypt.genSaltSync(10);
+        const hashPass = bcrypt.hashSync(password, salt);
 
-      const salt     = bcrypt.genSaltSync(10);
-      const hashPass = bcrypt.hashSync(password, salt);
+        const newUser = new User({
+            username: username,
+            password: hashPass,
+            city: city,
+            profileImg
+        });
 
-      const newUser = new User({
-          username:username,
-          password: hashPass,
-          city: city,
-          profileImg
-      });
+        newUser.save(err => {
+            if (err) {
+                res
+                    .status(400)
+                    .json({ message: "Saving user to database went wrong." });
+                return;
+            }
 
-      newUser.save(err => {
-          if (err) {
-              res.status(400).json({ message: 'Saving user to database went wrong.' });
-              return;
-          }
-          
-          // Automatically log in user after sign up
-          // .login() here is actually predefined passport method
-          req.login(newUser, (err) => {
+            // Automatically log in user after sign up
+            // .login() here is actually predefined passport method
+            req.login(newUser, err => {
+                if (err) {
+                    res.status(500).json({ message: "Login after signup went bad." });
+                    return;
+                }
 
-              if (err) {
-                  res.status(500).json({ message: 'Login after signup went bad.' });
-                  return;
-              }
-          
-              // Send the user's information to the frontend
-              // We can use also: res.status(200).json(req.user);
-              res.status(200).json(newUser);
-          });
-      });
-  });
+                // Send the user's information to the frontend
+                // We can use also: res.status(200).json(req.user);
+                res.status(200).json(newUser);
+            });
+        });
+    });
 });
 
-router.get('/logout', (req, res, next) => {
+router.get("/logout", (req, res, next) => {
     // req.logout() is defined by passport
     req.logout();
-    res.status(200).json({ message: 'Log out success!' });
+    res.status(200).json({ message: "Log out success!" });
 });
 
-router.get('/loggedin', (req, res, next) => {
+router.get("/loggedin", (req, res, next) => {
     // req.isAuthenticated() is defined by passport
     if (req.isAuthenticated()) {
         res.status(200).json(req.user);
         return;
     }
-    res.status(403).json({ message: 'Unauthorized' });
+    res.status(403).json({ message: "Unauthorized" });
 });
-
 
 router.post("/upload", parser.single("picture"), (req, res) => {
     User.findByIdAndUpdate(req.user.id, { image: req.file.url })
@@ -149,17 +153,16 @@ router.post("/upload", parser.single("picture"), (req, res) => {
                 pictureUrl: req.file.url
             });
         })
-        .catch((err) => {
+        .catch(err => {
             res.json({
                 success: false
             });
-            return err
-        })
+            return err;
+        });
 });
 
-
 router.post("/edit", (req, res) => {
-  const { username, password, city} = req.body;
+    const { username, password, city } = req.body;
 
     const myUser = {};
 
@@ -167,22 +170,21 @@ router.post("/edit", (req, res) => {
         myUser.username = username;
     }
 
-  if (city) {
-    myUser.city = city;
-  }
+    if (city) {
+        myUser.city = city;
+    }
 
-//   if (course) {
-//     myUser.course = course;
-//   }
+    //   if (course) {
+    //     myUser.course = course;
+    //   }
 
-    User.findByIdAndUpdate(req.user.id, myUser, {new: true}).then((user) => {
+    User.findByIdAndUpdate(req.user.id, myUser, { new: true }).then(user => {
         res.json({
             success: true,
             myUser: user
         });
     });
-});
 
+})
 
-
-module.exports = router;
+    module.exports = router;
