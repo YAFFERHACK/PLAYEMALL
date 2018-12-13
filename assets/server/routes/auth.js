@@ -4,6 +4,12 @@ const router = express.Router();
 const User = require("../models/User/User.js");
 const parser = require("../config/cloudinary");
 
+const axios = require('axios');
+require('dotenv').config();
+const igdb = require('igdb-api-node').default;
+const client = igdb(process.env.IGDB_KEY);
+
+
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
@@ -17,6 +23,7 @@ router.post("/login", (req, res, next) => {
       return;
     }
 
+<<<<<<< HEAD
     if (!theUser) {
       // "failureDetails" contains the error messages
       // from our logic in "LocalStrategy" { message: '...' }.
@@ -36,6 +43,57 @@ router.post("/login", (req, res, next) => {
     });
   })(req, res, next);
 });
+=======
+router.get('/igdbgames', (req, res) => {
+    client.games({
+        ids: [343, 3039, 3033],
+        // filters: {
+        //     'release_dates.date-gt': '2010-12-31',
+        //     'release_dates.date-lt': '2015-01-01',
+        //     'total_rating-gte':80
+        // },
+        fields: ['id','name','developers', 'publishers', 'total_rating', 'url','first_release_date'],
+        limit: 20,
+        search: 'battlefield'
+    })
+        .then((response) => {
+            res.status(200).json(response.body);
+        })
+        .catch((err) => {
+            res.status(500).json(err);
+            console.log(err);
+            return err
+        })
+})
+
+
+router.post('/login', (req, res, next) => {
+        passport.authenticate('local', (err, theUser, failureDetails) => {
+            if (err) {
+                res.status(403).json({ message: 'Something went wrong authenticating user' });
+                return;
+            }
+
+            if (!theUser) {
+                // "failureDetails" contains the error messages
+                // from our logic in "LocalStrategy" { message: '...' }.
+                res.status(401).json(failureDetails);
+                return;
+            }
+
+            // save user in session
+            req.login(theUser, (err) => {
+                if (err) {
+                    res.status(500).json({ message: 'Session save went bad.' });
+                    return;
+                }
+
+                // We are now logged in (that's why we can also send req.user)
+                res.status(200).json(theUser);
+            });
+        })(req, res, next);
+    });
+>>>>>>> 40e94fe2ac84f5cb2f0a032206a84a60c1b42006
 
 router.post("/signup", (req, res, next) => {
   const { username, password, city } = req.body;
@@ -99,6 +157,7 @@ router.post("/signup", (req, res, next) => {
   });
 });
 
+<<<<<<< HEAD
 router.get("/logout", (req, res, next) => {
   // req.logout() is defined by passport
   req.logout();
@@ -112,9 +171,25 @@ router.get("/loggedin", (req, res, next) => {
     return;
   }
   res.status(403).json({ message: "Unauthorized" });
+=======
+router.get('/logout', (req, res, next) => {
+    // req.logout() is defined by passport
+    req.logout();
+    res.status(200).json({ message: 'Log out success!' });
+});
+
+router.get('/loggedin', (req, res, next) => {
+    // req.isAuthenticated() is defined by passport
+    if (req.isAuthenticated()) {
+        res.status(200).json(req.user);
+        return;
+    }
+    res.status(403).json({ message: 'Unauthorized' });
+>>>>>>> 40e94fe2ac84f5cb2f0a032206a84a60c1b42006
 });
 
 router.post("/upload", parser.single("picture"), (req, res) => {
+<<<<<<< HEAD
   User.findByIdAndUpdate(req.user.id, { image: req.file.url })
     .then(() => {
       res.json({
@@ -128,16 +203,31 @@ router.post("/upload", parser.single("picture"), (req, res) => {
       });
       return err;
     });
+=======
+    User.findByIdAndUpdate(req.user.id, { image: req.file.url })
+        .then(() => {
+            res.json({
+                success: true,
+                pictureUrl: req.file.url
+            });
+        })
+        .catch((err) => {
+            res.json({
+                success: false
+            });
+            return err
+        })
+>>>>>>> 40e94fe2ac84f5cb2f0a032206a84a60c1b42006
 });
 
 router.post("/edit", (req, res) => {
   const { username, password, city } = req.body;
 
-  const myUser = {};
+    const myUser = {};
 
-  if (username) {
-    myUser.username = username;
-  }
+    if (username) {
+        myUser.username = username;
+    }
 
   if (city) {
     myUser.city = city;
@@ -147,12 +237,19 @@ router.post("/edit", (req, res) => {
   //     myUser.course = course;
   //   }
 
+<<<<<<< HEAD
   User.findByIdAndUpdate(req.user.id, myUser, { new: true }).then(user => {
     res.json({
       success: true,
       myUser: user
+=======
+    User.findByIdAndUpdate(req.user.id, myUser, {new: true}).then((user) => {
+        res.json({
+            success: true,
+            myUser: user
+        });
+>>>>>>> 40e94fe2ac84f5cb2f0a032206a84a60c1b42006
     });
-  });
 });
 
 module.exports = router;
