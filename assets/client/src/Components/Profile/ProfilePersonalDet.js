@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import './ProfileStyles.css';
+
 
 export default class ProfilePersonalDet extends Component {
   
@@ -14,7 +16,7 @@ export default class ProfilePersonalDet extends Component {
     console.log("este")
     return (
       <div>
-        <img alt="profileImg" src={this.props.user.profileImg} style={{width:300}}/>
+        <img className="profImg" alt="profileImg" src={this.props.user.profileImg} style={{width:250}}/>
         <h1>{this.props.user.username}</h1>
         <h4>Ciudad: {this.props.user.city}</h4>
         <h4>Posts: {this.props.user.post}</h4>

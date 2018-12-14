@@ -9,6 +9,7 @@ import Profile from "./Components/Profile/Profile";
 import SingleGameInfo from "./Components/SingleGameInfo";
 import ProfileEdit from "./Components/Profile/ProfileEdit";
 import AuthService from "./auth/auth-service";
+import GameExchanges from "./Components/GameExchangeDash/GameExchanges";
 
 class App extends Component {
   constructor(props) {
@@ -66,6 +67,11 @@ class App extends Component {
             exact
             path="/editprofile"
             render={() => <ProfileEdit user={this.state.loggedInUser} />}
+          />
+          <Route
+            exact
+            path="/dashboard"
+            render={() => <GameExchanges user={this.state.loggedInUser} />}
           />
           {/* <Route exact path="/gameinfo" component={SingleGameInfo} /> */}
           {/* <LogoutRoute redirectTo='/login' /> */}

@@ -22,6 +22,9 @@ class Home extends Component {
         <Link to={`/gameinfo/343`}>
           <button>gameinfo</button>
         </Link>
+        <Link to={`/dashboard`}>
+          <button>Exchange Dashboard</button>
+        </Link>
       </div>
     );
   }

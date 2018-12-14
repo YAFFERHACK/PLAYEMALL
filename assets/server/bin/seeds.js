@@ -44,27 +44,29 @@ let posts = [
   {
     title: "Yakuza 6 'After Hours Edition'",
     content: "Vendo edición coleccionista de Yakuza 6, en perfecto estado. No acepto cambios ni bajo el precio, entrega en zona de Arguelles, Madrid",
+    igdbId: 97247,
     price: 50,
     picPath: "/images/subsections/exban2.png",
     creatorId: 1,
     // subsectionId: 4,
-    section: "Express"
+    // section: "Express"
   },
   {
     title: "Vendo o intercambio New Nintendo 3DS",
     content: "En perfecto estado, cambio por PS Vita o vendo, no acepto ofertas. Zona 'Callao' en Madrid",
+    igdbId: 137,
     price: 110,
     picPath: "",
     creatorId: 1,
     // subsectionId: 4,
-    section: "Express"
+    // section: "Express"
   },
 ];
 
 let comments = [
   {
     content: "eso es una mierda",
-    creatorId: 2,
+    creatorId: 1,
     postId: 0
   },
   {
@@ -87,15 +89,6 @@ User.deleteMany()
 .then(usersCreated => {
   console.log(`${usersCreated.length} users created with the following id:`);
   console.log(usersCreated.map(u => u._id));
-})
-.then(() => {
-  // Close properly the connection to Mongoose
-  mongoose.disconnect()
-})
-.catch(err => {
-  mongoose.disconnect()
-  throw err
-})
 
 posts.forEach((e) => {e.creatorId = usersCreated[e.creatorId]._id
 });
@@ -123,12 +116,14 @@ return Post.deleteMany()
             console.log(commentsCreated.map(u => u._id));
           })        
       })
-  .then(() => {
-    // Close properly the connection to Mongoose
-    mongoose.disconnect()
-  })
-  .catch(err => {
-    mongoose.disconnect()
-    throw err
-  })
+})
+.then(() => {
+  // Close properly the connection to Mongoose
+  mongoose.disconnect()
+})
+.catch(err => {
+  mongoose.disconnect()
+  throw err
+})
+
   
