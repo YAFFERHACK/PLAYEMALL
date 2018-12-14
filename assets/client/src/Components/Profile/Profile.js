@@ -21,7 +21,7 @@ export default class Profile extends Component {
     if (this.props.user === undefined) {
       return (
         <div>
-          <h1>Loading...</h1>
+          <h1>Login Failed</h1>
         </div>
       )
     } else {

@@ -162,8 +162,9 @@ router.post("/upload", parser.single("picture"), (req, res) => {
         });
 });
 
-router.post("/edit", (req, res) => {
+router.post("/edit", parser.single("photo"), (req, res) => {
     const { username, password, city } = req.body;
+    // const profileImg = req.file ? req.file.url : '...';
 
     const myUser = {};
 
@@ -175,9 +176,11 @@ router.post("/edit", (req, res) => {
         myUser.city = city;
     }
 
-    //   if (course) {
-    //     myUser.course = course;
-    //   }
+    if (req.file) {
+        const profileImg = req.file.url;
+        myUser.profileImg = profileImg;
+    }
+
 
     User.findByIdAndUpdate(req.user.id, myUser, { new: true }).then(user => {
         res.json({

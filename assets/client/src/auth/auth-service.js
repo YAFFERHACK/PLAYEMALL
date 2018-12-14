@@ -60,9 +60,20 @@ class AuthService {
   });
 };
 
-  edit = (username, password, city) => {
+  edit = (username, password, city, photo) => {
+    
+    const formData = new FormData();
+    let user = { username, password, city, photo };
+
+      Object.keys(user).forEach(key => formData.append(key, user[key]));
+    console.log(formData)
+
     return this.service
-    .post("/edit", { username, password, city })
+    .post("/edit", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    })
     .then(response => {
       console.log(response.data);
       console.log("entra el edit");
