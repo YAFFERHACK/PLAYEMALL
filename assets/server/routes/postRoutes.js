@@ -35,16 +35,16 @@ postRouter.post('/new', (req, res, next)=>{
     })
 });
 
-// postRouter.get("/post/:id",(req, res, next) => {
-//     console.log("entra");
-//     Post.findById(req.params.id)
-//       .populate("creatorId", "username")
-//       .then(post => {
-//         console.log(post);
-//         res.render("sourcesCode/complete-post", { post, user: req.user });
-//       });
-//   }
-// );
+postRouter.get("/completepost/:id",(req, res, next) => {
+    console.log("entra");
+    Post.findById(req.params.id)
+      .populate("creatorId", "username")
+      .then(post => {
+        console.log(post);
+        res.json( post );
+      });
+  }
+);
 
 // postRouter.get("/new", ensureLogin.ensureLoggedIn(), (req, res) => {
 //   res.render("sourcesCode/newPost", {

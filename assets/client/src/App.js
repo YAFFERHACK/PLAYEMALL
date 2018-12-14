@@ -10,6 +10,8 @@ import SingleGameInfo from "./Components/SingleGameInfo";
 import ProfileEdit from "./Components/Profile/ProfileEdit";
 import AuthService from "./auth/auth-service";
 import GameExchanges from "./Components/GameExchangeDash/GameExchanges";
+import SinglePost from "./Components/GameExchangeDash/ExchangeSinglePost";
+
 
 class App extends Component {
   constructor(props) {
@@ -72,6 +74,11 @@ class App extends Component {
             exact
             path="/dashboard"
             render={() => <GameExchanges user={this.state.loggedInUser} />}
+          />
+          <Route
+            exact
+            path="/completepost/:id"
+            render={(match) => <SinglePost user={this.state.loggedInUser} {...match}/>}
           />
           {/* <Route exact path="/gameinfo" component={SingleGameInfo} /> */}
           {/* <LogoutRoute redirectTo='/login' /> */}

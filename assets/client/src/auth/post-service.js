@@ -42,8 +42,11 @@ class PostService {
         // console.log(err.response.data.message, '<---');
       })
   }
-
-
+  dashboardOne = (id) => {
+    return this.service.get(`/completepost/${id}`)
+    .then(res => res.data)
+    .catch(err => console.log(err));
+  }
 
 
 }
