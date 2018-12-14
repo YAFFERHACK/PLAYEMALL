@@ -7,8 +7,8 @@ const mongoose = require("mongoose");
 require('dotenv').config();
 const bcrypt = require("bcrypt");
 const User = require("../models/User/User.js");
-// const Post = require("../models/PostModel/PostModel");
-// const Comment = require("../models/CommentModel/CommentModel");
+const Post = require("../models/PostModel/PostModel");
+const Comment = require("../models/CommentModel/CommentModel");
 // const SingleGame = require("../models/SingleGameModel/SingleGameModel");
 // const Collection = require("../models/CollectionModel/CollectionModel");
 
@@ -54,10 +54,28 @@ let posts = [
     title: "Vendo o intercambio New Nintendo 3DS",
     content: "En perfecto estado, cambio por PS Vita o vendo, no acepto ofertas. Zona 'Callao' en Madrid",
     price: 110,
-    picPath: "/images/subsections/exban2.png",
+    picPath: "",
     creatorId: 1,
     // subsectionId: 4,
     section: "Express"
+  },
+];
+
+let comments = [
+  {
+    content: "eso es una mierda",
+    creatorId: 2,
+    postId: 0
+  },
+  {
+    content: "eso es mentira",
+    creatorId: 1,
+    postId: 0
+  },
+  {
+    content: "mi post es mejor",
+    creatorId: 0,
+    postId: 1
   },
 ];
 
@@ -79,40 +97,38 @@ User.deleteMany()
   throw err
 })
 
-// posts.forEach((e) => {e.creatorId = usersCreated[e.creatorId]._id
-// });
-// console.log(`${usersCreated.length} users created with the following id:`);
-// console.log(usersCreated.map(u => u._id));
+posts.forEach((e) => {e.creatorId = usersCreated[e.creatorId]._id
+});
+console.log(`${usersCreated.length} users created with the following id:`);
+console.log(usersCreated.map(u => u._id));
 
-// return Post.deleteMany()
-//       .then(() => {
-//         return Post.create(posts).catch(err => console.log(err))
-//       })
-//       .then(postsCreated => {
-//         console.log(`${postsCreated.length} posts created with the following id:`);
-//         console.log(postsCreated.map(u => u._id));
-//         comments.forEach((e) => {
-//           e.creatorId = usersCreated[e.creatorId]._id;
-//           e.postId = postsCreated[e.postId]._id
-//         }
-//         );
-//         return Comment.deleteMany()
-//           .then(() => {
-//             return Comment.create(comments).catch(err => console.log(err))
-//           })
-//           .then(commentsCreated => {
-//             console.log(`${commentsCreated.length} comments created with the following id:`);
-//             console.log(commentsCreated.map(u => u._id));
-//           })        
-//       })
-//     })  
-//   })
-//   .then(() => {
-//     // Close properly the connection to Mongoose
-//     mongoose.disconnect()
-//   })
-//   .catch(err => {
-//     mongoose.disconnect()
-//     throw err
-//   })
-//   })
+return Post.deleteMany()
+      .then(() => {
+        return Post.create(posts).catch(err => console.log(err))
+      })
+      .then(postsCreated => {
+        console.log(`${postsCreated.length} posts created with the following id:`);
+        console.log(postsCreated.map(u => u._id));
+        comments.forEach((e) => {
+          e.creatorId = usersCreated[e.creatorId]._id;
+          e.postId = postsCreated[e.postId]._id
+        }
+        );
+        return Comment.deleteMany()
+          .then(() => {
+            return Comment.create(comments).catch(err => console.log(err))
+          })
+          .then(commentsCreated => {
+            console.log(`${commentsCreated.length} comments created with the following id:`);
+            console.log(commentsCreated.map(u => u._id));
+          })        
+      })
+  .then(() => {
+    // Close properly the connection to Mongoose
+    mongoose.disconnect()
+  })
+  .catch(err => {
+    mongoose.disconnect()
+    throw err
+  })
+  
