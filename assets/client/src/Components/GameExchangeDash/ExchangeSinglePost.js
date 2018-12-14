@@ -25,28 +25,24 @@ export default class SinglePost extends Component {
   };
 
   render() {
-    let postComplete = "";
-    // if (this.state.posts !== null) {
-    console.log(this.state.posts);
-    // postComplete = this.state.posts.find(post => post.id == )(
-    //   post => { 
-    //     return(
-    //       <div>
-    //         <img alt="imgPostSnippet" src={post.picPath} />
-    //         <h1>{post.title}</h1>
-    //         <Link to={`/dashboard`}>
-    //       <button>Volver</button>
-    //     </Link>
-    //       </div>
-    //     )
-    //     // console.log(postSnippet);
-    //   });}
+    if (this.state.posts) {
       return (
-      <div>
-        LoZ AnuNSSsiOs Pa LaS NenAzZZZz
-        {this.state.posts ? this.state.posts.title: <p>Loading...</p>}
-      </div>
-    );
+        <div>
+        <h1>{this.state.posts.title}</h1>
+        {<h4>{this.state.posts.creatorId.username}</h4> }
+        <img alt="img" src={this.state.posts.picPath}/> 
+        <h4>{this.state.posts.content}</h4>
+        <h4>{this.state.posts.igdbId}</h4>
+        <h4>Precio {this.state.posts.price}</h4>
+        </div>
+
+
+      )
+    } else {
+      return(
+        <h1>Loading...</h1>
+      )
+    }
   }
 }
 

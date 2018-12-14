@@ -29,6 +29,7 @@ export default class GameExchanges extends Component {
         return(
           <div>
             <img alt="imgPostSnippet" src={post.picPath} />
+            <p>{post.picPath}</p>
             <h1>{post.title}</h1>
             <Link to={`/completepost/${post._id}`}>
           <button>Ver anuncio</button>
