@@ -4,7 +4,7 @@ import "./App.css";
 import { Switch, Route, Link } from "react-router-dom";
 import Home from "./Components/Home";
 import Login from "./Components/UserLogin/Login";
-import Signup from "./Components/UserLogin/Signup";
+import Signup from "./Components/Signup";
 import Profile from "./Components/Profile/Profile";
 import SingleGameInfo from "./Components/SingleGameInfo";
 import ProfileEdit from "./Components/Profile/ProfileEdit";
@@ -21,7 +21,9 @@ class App extends Component {
   Getloggedin = () => {
     this.auth
       .loggedin()
-      .then(user => this.setState({ ...this.state, loggedInUser: user }));
+      .then(user => {
+        console.log(user);
+        this.setState({ ...this.state, loggedInUser: user })});
   };
 
   getTheUser = userObj => {
@@ -39,6 +41,11 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
+          <Route exact path='/' component={Home}/>
+          {/* <Route exact path='/login' render={() => <Login getUser={this.getTheUser}/>}/> */}
+          {/* <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/> */}
+          {/* <Route exact path='/profile' render={() => <Profile getUser={this.getTheUser}/>}/> */}
+          <Route exact path='/gameinfo/:id' render ={(match)=> <SingleGameInfo {...match}/>}/>
           <Route exact path="/" component={Home} />
           <Route
             exact
@@ -60,7 +67,7 @@ class App extends Component {
             path="/editprofile"
             render={() => <ProfileEdit user={this.state.loggedInUser} />}
           />
-          <Route exact path="/gameinfo" component={SingleGameInfo} />
+          {/* <Route exact path="/gameinfo" component={SingleGameInfo} /> */}
           {/* <LogoutRoute redirectTo='/login' /> */}
         </Switch>
         <button onClick={this.Getloggout}>pepe se va</button>

@@ -19,7 +19,7 @@ class Home extends Component {
         <Link to={`/signup/`}>
           <button>signup</button>
         </Link>
-        <Link to={`/gameinfo`}>
+        <Link to={`/gameinfo/343`}>
           <button>gameinfo</button>
         </Link>
       </div>

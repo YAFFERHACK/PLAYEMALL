@@ -14,7 +14,7 @@ export default class ProfilePersonalDet extends Component {
     console.log("este")
     return (
       <div>
-        <img alt="profileImg" src="https://vignette.wikia.nocookie.net/universosteven/images/9/91/Friki-Meme.png/revision/latest?cb=20150630204103&path-prefix=es"/>
+        <img alt="profileImg" src={this.props.user.profileImg} style={{width:300}}/>
         <h1>{this.props.user.username}</h1>
         <h4>Ciudad: {this.props.user.city}</h4>
         <h4>Posts: {this.props.user.post}</h4>
