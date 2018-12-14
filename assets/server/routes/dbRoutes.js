@@ -62,5 +62,32 @@ router.get('/gameinfo/:id', (req, res) => {
 })
 
 
+router.get('/gamesearch/:search', (req, res) => {
+
+    console.log(req.params.search);
+
+    client.games({
+        // ids: [req.params.id],
+        // filters: {
+        //     'release_dates.date-gt': '2010-12-31',
+        //     'release_dates.date-lt': '2015-01-01',
+        //     'total_rating-gte':80
+        // },
+        // fields: '*',
+        fields: ['id','name','developers', 'publishers', 'total_rating', 'url','first_release_date'],
+        // expand:['genres','platforms', 'publishers'],
+        limit: 20,
+        search: req.params.search
+    })
+        .then((response) => {
+            res.status(200).json(response.body);
+        })
+        .catch((err) => {
+            res.status(500).json(err);
+            console.log(err);
+            return err
+        })
+})
+
 
 module.exports = router;
