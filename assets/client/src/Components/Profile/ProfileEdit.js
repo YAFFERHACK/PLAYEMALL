@@ -6,7 +6,7 @@ import AuthService from "../../auth/auth-service";
 export default class ProfileEdit extends Component {
   constructor(props) {
     super(props);
-    this.state = { username: "", password: "", city: "", redirect: false };
+    this.state = { username: "", password: "", city: "", photo: "", redirect: false };
     this.service = new AuthService();
   }
 
@@ -15,16 +15,18 @@ export default class ProfileEdit extends Component {
     const username = this.state.username;
     const password = this.state.password;
     const city = this.state.city;
-    // const course = this.state.course;
+    const photo = this.state.photo;
+    
 
     this.service
-      .edit(username, password, city)
+      .edit(username, password, city, photo)
       .then(response => {
         this.setState({
           ...this.state,
           username: "",
           password: "",
           city: "",
+          photo: "",
           redirect: true
         });
         // this.props.getUser(response);
@@ -35,7 +37,11 @@ export default class ProfileEdit extends Component {
 
   handleChange = event => {
     const { name, value } = event.target;
-    this.setState({ [name]: value });
+    if (name == "photo") {
+      this.setState({ ...this.state, photo: event.target.files[0] })
+    } else {
+      this.setState({ ...this.state, [name]: value });
+    }
   };
   render() {
     if (this.state && this.state.redirect) {
@@ -124,7 +130,8 @@ export default class ProfileEdit extends Component {
             <option>Zaragoza</option>
           </select>
 
-          
+           <input type="file" name="photo" onChange={(e) => this.handleChange(e)} /> <br />
+
           <input type="submit" value="Edit" />
         </form>     
          </div>
