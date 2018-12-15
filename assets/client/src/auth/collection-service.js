@@ -54,6 +54,18 @@ class CollService {
             })
     }
 
+    removeCollection = (id) =>{
+        let collection = {id}
+        return this.service.post('/removecoll', collection)
+        .then((response)=>{
+            console.log('collection successfully removed');
+            return response.data
+        })
+        .catch((err)=>{
+            console.log('collection removal failed');
+            console.log(err);
+        })
+    }
 }
 
 

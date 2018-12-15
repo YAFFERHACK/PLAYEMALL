@@ -33,6 +33,20 @@ export default class ProfileCollection extends Component {
     })
   }
 
+  deleteCollection = (event) => {
+    const {value} = event.target;
+    console.log(event.target);
+    console.log(this.state.collections);
+    let id = this.state.collections[value]._id;
+
+    this.service.removeCollection(id)
+    .then(()=>this.getCollectionData())
+    .catch((err)=>{
+      console.log(err)
+    })
+
+  }
+
   getCollectionData = () => {
     this.service.userCollections()
     .then((populatedUser)=>{
@@ -55,7 +69,12 @@ export default class ProfileCollection extends Component {
     
     if (this.state.collections!==null){
       this.collectionList = this.state.collections.map((collection, i)=>{
-        return <h1 key={i}>{collection.name}</h1>
+        return(
+          <div key={i}>
+            <h2 >{collection.name}</h2>
+            <button value={i} onClick={(e)=>{this.deleteCollection(e)}}>Delete</button>
+          </div>
+        ) 
       })
     }
 
@@ -66,10 +85,8 @@ export default class ProfileCollection extends Component {
           <label htmlFor="coll-name">Collection name: </label>
           <input value={this.state.collName} type="text" name="collName" id="coll-name" onChange={(e)=>this.handleChange(e)}/>
           <button name="create-coll" onClick={this.createCollection}>Create New Collection</button>
-          <h1>{(this.props.user) && this.props.user.username}</h1>
+          <h1>{(this.props.user) && this.props.user.username}'s collections:</h1>
           {this.collectionList!==null && this.collectionList}
-          {/* <button>Delete Collection</button> */}
-
         </div>
 
       <GameFinder user={this.props.user}/>

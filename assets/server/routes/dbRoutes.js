@@ -171,7 +171,7 @@ router.get('/user-collections', (req, res) => {
 router.post('/removecoll', (req, res) => {
     let {id} = req.body;
 
-    User.findByIdAndUpdate(req.user.id, {$pull: {collections: id}})
+    User.findByIdAndUpdate(req.user.id, {$pull: {collections: id}}, {new:true})
     .then((result)=>{
         console.log('update successful');
         console.log(result);
