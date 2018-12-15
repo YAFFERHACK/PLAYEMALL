@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Home from "./Components/Home";
 import Login from "./Components/UserLogin/Login";
 import Signup from "./Components/Signup";
@@ -22,7 +21,7 @@ class App extends Component {
     this.auth
       .loggedin()
       .then(user => {
-        console.log(user);
+        // console.log(user);
         this.setState({ ...this.state, loggedInUser: user })});
   };
 
@@ -42,9 +41,6 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route exact path='/' component={Home}/>
-          {/* <Route exact path='/login' render={() => <Login getUser={this.getTheUser}/>}/> */}
-          {/* <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/> */}
-          {/* <Route exact path='/profile' render={() => <Profile getUser={this.getTheUser}/>}/> */}
           <Route exact path='/gameinfo/:id' render ={(match)=> <SingleGameInfo {...match}/>}/>
           <Route exact path="/" component={Home} />
           <Route
@@ -67,7 +63,6 @@ class App extends Component {
             path="/editprofile"
             render={() => <ProfileEdit user={this.state.loggedInUser} />}
           />
-          {/* <Route exact path="/gameinfo" component={SingleGameInfo} /> */}
           {/* <LogoutRoute redirectTo='/login' /> */}
         </Switch>
         <button onClick={this.Getloggout}>pepe se va</button>

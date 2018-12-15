@@ -37,7 +37,7 @@ class Signup extends Component {
 
   handleChange = (event) => {
     const { name, value } = event.target;
-    if (name == "photo") {
+    if (name === "photo") {
       this.setState({ ...this.state, photo: event.target.files[0] })
     } else {
       this.setState({ ...this.state, [name]: value });

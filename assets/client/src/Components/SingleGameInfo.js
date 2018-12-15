@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import AuthService from '../auth/auth-service';
-import { Link, Redirect } from 'react-router-dom';
 import axios from "axios";
 
 export default class SingleGameInfo extends Component {
@@ -98,7 +96,7 @@ export default class SingleGameInfo extends Component {
                     <img alt="img" src={screenshot} />
                     <hr />
                     <h3>Videos</h3>
-                    <iframe width="420" height="315" src={video} />
+                    <iframe title="view" width="420" height="315" src={video} />
                 </div>
             )
 

@@ -6,15 +6,7 @@ import './ProfileStyles.css';
 
 
 
-
 export default class Profile extends Component {
-  constructor(props){
-    super(props)
-
-    this.state={
-      props: props,
-    }
-  }
 
   render() {
 
@@ -25,13 +17,11 @@ export default class Profile extends Component {
         </div>
       )
     } else {
-      console.log('verdaderamente entra aqui');
-      console.log(this.props.user)
-      console.log("este entra")
+    
       return (
         <div className="profileDad">
           <ProfilePersonalDet user={this.props.user} />
-          <ProfileCollection />
+          <ProfileCollection user={this.props.user} />
         </div>
       )
     }
