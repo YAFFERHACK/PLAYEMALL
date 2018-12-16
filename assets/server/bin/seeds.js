@@ -46,7 +46,7 @@ let posts = [
     content: "Vendo edición coleccionista de Yakuza 6, en perfecto estado. No acepto cambios ni bajo el precio, entrega en zona de Arguelles, Madrid",
     igdbId: 97247,
     price: 50,
-    picPath: "./images/yaku6inter.jpg",
+    picPath: "https://sm.ign.com/ign_za/gallery/y/yakuza-6-s/yakuza-6-song-of-life-after-hours-premium-edition_hayw.jpg",
     creatorId: 1,
     // subsectionId: 4,
     // section: "Express"
@@ -56,7 +56,7 @@ let posts = [
     content: "En perfecto estado, cambio por PS Vita o vendo, no acepto ofertas. Zona 'Callao' en Madrid",
     igdbId: 137,
     price: 110,
-    picPath: "./images/profiledefault.png",
+    picPath: "https://i.ytimg.com/vi/XOiVk2BS0VE/maxresdefault.jpg",
     creatorId: 1,
     // subsectionId: 4,
     // section: "Express"

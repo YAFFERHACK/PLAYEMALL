@@ -11,6 +11,8 @@ import ProfileEdit from "./Components/Profile/ProfileEdit";
 import AuthService from "./auth/auth-service";
 import GameExchanges from "./Components/GameExchangeDash/GameExchanges";
 import SinglePost from "./Components/GameExchangeDash/ExchangeSinglePost";
+import NewPost from "./Components/GameExchangeDash/NewPost";
+
 
 
 class App extends Component {
@@ -45,9 +47,6 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route exact path='/' component={Home}/>
-          {/* <Route exact path='/login' render={() => <Login getUser={this.getTheUser}/>}/> */}
-          {/* <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/> */}
-          {/* <Route exact path='/profile' render={() => <Profile getUser={this.getTheUser}/>}/> */}
           <Route exact path='/gameinfo/:id' render ={(match)=> <SingleGameInfo {...match}/>}/>
           <Route exact path="/" component={Home} />
           <Route
@@ -79,6 +78,11 @@ class App extends Component {
             exact
             path="/completepost/:id"
             render={(match) => <SinglePost user={this.state.loggedInUser} {...match}/>}
+          />
+          <Route
+            exact
+            path="/newpost"
+            render={(match) => <NewPost user={this.state.loggedInUser} {...match}/>}
           />
           {/* <Route exact path="/gameinfo" component={SingleGameInfo} /> */}
           {/* <LogoutRoute redirectTo='/login' /> */}

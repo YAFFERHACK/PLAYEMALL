@@ -22,26 +22,28 @@ class PostService {
   }
 
 
-  dashboardWritePost = (username, password, city, photo) => {
+  dashboardWritePost = (title, content, price, photo) => {
     const formData = new FormData();
-    let user = { username, password, city, photo };
+    let newPost = { title, content, price, photo };
 
-    Object.keys(user).forEach(key => formData.append(key, user[key]));
+    Object.keys(newPost).forEach(key => formData.append(key, newPost[key]));
     console.log(formData)
-    return this.service.post('/signup', formData, {
+    return this.service.post('/newpost', formData, {
       headers: {
         "Content-Type": "multipart/form-data"
       }
     })
       .then((response) => {
-        console.log('entra por el then');
+        console.log('entra por el then del newpost');
         console.log(response.data)
       })
       .catch((err) => {
-        console.log('entra por el catch');
+        console.log('entra por el catch del newpost');
         // console.log(err.response.data.message, '<---');
       })
   }
+
+
   dashboardOne = (id) => {
     return this.service.get(`/completepost/${id}`)
     .then(res => res.data)

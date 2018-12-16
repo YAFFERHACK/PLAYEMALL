@@ -16,33 +16,33 @@ export default class GameExchanges extends Component {
   componentDidMount = () => {
     this.service.dashboardShowPost().then(response => {
       console.log(response);
-      this.setState({...this.state, posts: response})
+      this.setState({ ...this.state, posts: response });
     });
   };
 
   render() {
     let postSnippet = "";
     if (this.state.posts !== null) {
-    console.log(this.props.post);
-     postSnippet = this.state.posts.map(
-      post => { 
-        return(
+      console.log(this.props.post);
+      postSnippet = this.state.posts.map(post => {
+        return (
           <div>
             <img alt="imgPostSnippet" src={post.picPath} />
-            <p>{post.picPath}</p>
             <h1>{post.title}</h1>
             <Link to={`/completepost/${post._id}`}>
-          <button>Ver anuncio</button>
-        </Link>
+              <button>Ver anuncio</button>
+            </Link>
+            <br />
+            <hr />
+            <br />
+            <Link to={`/newpost`}>
+              <button>Nuevo anuncio</button>
+            </Link>
           </div>
-        )
+        );
         // console.log(postSnippet);
-      });}
-      return (
-      <div>
-        LoZ AnuNSSsiOs Pa LaS NenAzZZZz
-        {postSnippet}
-      </div>
-    );
+      });
+    }
+    return <div>{postSnippet}</div>;
   }
 }

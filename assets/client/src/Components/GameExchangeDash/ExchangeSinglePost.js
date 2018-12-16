@@ -29,11 +29,14 @@ export default class SinglePost extends Component {
       return (
         <div>
         <h1>{this.state.posts.title}</h1>
-        {<h4>{this.state.posts.creatorId.username}</h4> }
+        {<h4>Autor: {this.state.posts.creatorId.username}</h4> }
         <img alt="img" src={this.state.posts.picPath}/> 
         <h4>{this.state.posts.content}</h4>
         <h4>{this.state.posts.igdbId}</h4>
-        <h4>Precio {this.state.posts.price}</h4>
+        <h4>Precio: {this.state.posts.price} euros</h4>
+        <Link to={`/dashboard`}>
+          <button>Volver</button>
+        </Link>
         </div>
 
 
