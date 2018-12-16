@@ -50,9 +50,9 @@ export default class ProfileCollection extends Component {
   getCollectionData = () => {
     this.service.userCollections()
     .then((populatedUser)=>{
-      console.log('it did update');
-      console.log(this.state.collections);
-      console.log(populatedUser.collections);
+      // console.log('it did update');
+      // console.log(this.state.collections);
+      // console.log(populatedUser.collections);
       if(this.state.collections === null || this.state.collections.length !== populatedUser.collections.length)
       {this.setState({...this.state, collections: populatedUser.collections})}
     })
@@ -69,9 +69,13 @@ export default class ProfileCollection extends Component {
     
     if (this.state.collections!==null){
       this.collectionList = this.state.collections.map((collection, i)=>{
+        let gamesList = collection.games.map((game)=>{
+          return <h3>{game.name}</h3>
+        })
         return(
           <div key={i}>
             <h2 >{collection.name}</h2>
+            <div>{gamesList}</div>
             <button value={i} onClick={(e)=>{this.deleteCollection(e)}}>Delete</button>
             <GameFinder collection={collection} user={this.props.user}/>
           </div>

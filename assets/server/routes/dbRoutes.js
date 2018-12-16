@@ -159,7 +159,12 @@ router.get('/collections', (req, res) => {
 router.get('/user-collections', (req, res) => {
     let id = req.user.id;
 
-    User.findById(id).populate('collections')
+    User.findById(id).populate({
+        path: 'collections',
+        populate: {
+            path: 'games'
+            }
+    })
         .then((result) => {
             res.status(200).json(result);
         })
