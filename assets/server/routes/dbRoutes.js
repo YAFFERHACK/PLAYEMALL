@@ -11,6 +11,7 @@ const igdb = require('igdb-api-node').default;
 const client = igdb(process.env.IGDB_KEY);
 
 const Collection = require('../models/CollectionModel/CollectionModel.js');
+const Game = require('../models/SingleGameModel/SingleGameModel.js');
 
 
 
@@ -78,7 +79,7 @@ router.get('/gamesearch/:search', (req, res) => {
         // },
         // fields: '*',
         fields: ['id', 'name', 'developers', 'publishers', 'total_rating', 'url', 'first_release_date'],
-        // expand:['genres','platforms', 'publishers'],
+        expand: ['genres', 'platforms', 'publishers'],
         limit: 20,
         search: req.params.search
     })
@@ -114,11 +115,11 @@ router.post('/newcoll', (req, res) => {
             return;
         }
     });
-    
+
 
     const newCollection = new Collection({
         creatorId: creatorId,
-        name : name
+        name: name
     });
 
     let CollectionID = newCollection.save(err => {
@@ -133,25 +134,25 @@ router.post('/newcoll', (req, res) => {
     });
 
     let collId = newCollection._id;
-    
-    User.findByIdAndUpdate(req.user.id, {$addToSet: {collections: collId}})
-    .then((result)=>{
-        console.log(result);
-    })
-    .catch((err)=>{
-        console.log(err);
-    })
+
+    User.findByIdAndUpdate(req.user.id, { $addToSet: { collections: collId } })
+        .then((result) => {
+            console.log(result);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
 })
 
 router.get('/collections', (req, res) => {
 
     Collection.find().populate('creatorId')
-    .then((result)=>{
-        res.status(200).json(result);
-    })
-    .catch((err)=>{
-        res.status(500).json(err);
-    })
+        .then((result) => {
+            res.status(200).json(result);
+        })
+        .catch((err) => {
+            res.status(500).json(err);
+        })
 })
 
 
@@ -159,42 +160,124 @@ router.get('/user-collections', (req, res) => {
     let id = req.user.id;
 
     User.findById(id).populate('collections')
-    .then((result)=>{
-        res.status(200).json(result);
-    })
-    .catch((err)=>{
-        res.status(500).json(err);
-    })
+        .then((result) => {
+            res.status(200).json(result);
+        })
+        .catch((err) => {
+            res.status(500).json(err);
+        })
 })
 
 
 router.post('/removecoll', (req, res) => {
-    let {id} = req.body;
+    let { id } = req.body;
 
-    User.findByIdAndUpdate(req.user.id, {$pull: {collections: id}}, {new:true})
-    .then((result)=>{
-        console.log('update successful');
-        console.log(result);
-        res.status(200).json(result);
-    })
-    .catch((err)=>{
-        console.log('update failed');
-        console.log(err);
-        res.status(500).json(err);
-    })
-    
+    User.findByIdAndUpdate(req.user.id, { $pull: { collections: id } }, { new: true })
+        .then((result) => {
+            console.log('update successful');
+            console.log(result);
+            res.status(200).json(result);
+        })
+        .catch((err) => {
+            console.log('update failed');
+            console.log(err);
+            res.status(500).json(err);
+        })
+
     Collection.findByIdAndRemove(id)
-    .then((res)=>{
-        console.log('removal successful');
-        console.log(res);
-    })
-    .catch((err)=>{
-        console.log('removal failed');
-        console.log(err);
-    })
+        .then((res) => {
+            console.log('removal successful');
+            console.log(res);
+        })
+        .catch((err) => {
+            console.log('removal failed');
+            console.log(err);
+        })
 })
 
-// router.post('/removecoll', (req, res) => {
-    
-// })
-    module.exports = router;
+router.post('/addgame', async (req, res) => {
+    let { collectionId, idIgdb, name } = req.body;
+    let collectionIdObject = new mongoose.Types.ObjectId(collectionId);
+
+    await console.log({ collectionId, idIgdb, name });
+
+    let alreadyInDb = false;
+    let gameId = null;
+
+    await Game.findOne({ idIgdb }, (err, foundGame) => {
+        if (err) {
+            res.status(500).json({ message: "Mongo: Problem checking the name against the database." });
+            return;
+        }
+
+        if (foundGame) {
+            console.log(foundGame);
+            alreadyInDb = true;
+            gameId = foundGame._id;
+            return;
+        }
+    });
+
+    await console.log("already in Db: " + alreadyInDb);
+
+    if (!alreadyInDb) {
+        let newGame = new Game({
+            idIgdb: idIgdb,
+            name: name
+        })
+
+        await newGame.save(err => {
+            if (err) {
+                res
+                    .status(400)
+                    .json({ message: "Saving game to database went wrong." });
+                return;
+            }
+            res.status(200).json(newGame);
+            return newGame
+        });
+
+        gameId = newGame._id;
+    }
+
+    await Collection.findByIdAndUpdate(collectionId, { $addToSet: { games: gameId } }, { new: true })
+        .then((result) => {
+            console.log(result);
+            if (alreadyInDb) {
+                res.status(200).json(result);
+            }
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+
+    await Game.findByIdAndUpdate(gameId, { $addToSet: { collections: collectionId } }, { new: true })
+        .then((result) => {
+            console.log(result);
+            // if (alreadyInDb) {
+            //     res.status(200).json(result);
+            // }
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+})
+
+router.post('/removefromcoll', (req, res) => {
+    let { collectionId, gameId } = req.body;
+
+    Collection.findByIdAndUpdate(collectionId, { $pull: { games: gameId } }, { new: true })
+        .then((result) => {
+            console.log('update successful');
+            console.log(result);
+            res.status(200).json(result);
+        })
+        .catch((err) => {
+            console.log('update failed');
+            console.log(err);
+            res.status(500).json(err);
+        })
+
+})
+
+module.exports = router;

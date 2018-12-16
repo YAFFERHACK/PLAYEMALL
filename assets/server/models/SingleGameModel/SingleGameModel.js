@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const singleGameSchema = new Schema({
-  idIgdb: Number, //diccionario id
+  collections: [{ type: Schema.Types.ObjectId, ref: "Collection" }],
+  idIgdb: { type: Number, unique: true} ,//diccionario id
   name: String,
   url: String,
   summary: String,
@@ -27,7 +28,9 @@ const singleGameSchema = new Schema({
   cover: {
     url: String,
     cloudinary_id: String
-  },
+  }
+},
+{
   timestamps: {
     createdAt: "created_at",
     updatedAt: "updated_at"

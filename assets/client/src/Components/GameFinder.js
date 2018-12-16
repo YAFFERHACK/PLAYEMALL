@@ -20,7 +20,7 @@ export default class GameFinder extends React.Component {
 
     axios.get(`http://localhost:5000/api/dbroutes/gamesearch/${this.state.searchField}`)
       .then((response) => {
-        console.log('findHanler axios then')
+        console.log('findHandler axios then')
         this.setState({ ...this.state, games: [...response.data] }, function () {
           console.log(this.state.games);
         });
@@ -38,7 +38,7 @@ export default class GameFinder extends React.Component {
     if (this.state.games !== []) {
       gameList = this.state.games.map((game) => {
         return (
-          <option>{game.name}</option>
+          <option value={game.id}>{game.name}</option>
         )
       })
     }

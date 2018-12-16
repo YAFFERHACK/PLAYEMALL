@@ -73,6 +73,7 @@ export default class ProfileCollection extends Component {
           <div key={i}>
             <h2 >{collection.name}</h2>
             <button value={i} onClick={(e)=>{this.deleteCollection(e)}}>Delete</button>
+            <GameFinder collection={collection} user={this.props.user}/>
           </div>
         ) 
       })
@@ -89,7 +90,7 @@ export default class ProfileCollection extends Component {
           {this.collectionList!==null && this.collectionList}
         </div>
 
-      <GameFinder user={this.props.user}/>
+      
       {/* <div>
         <img style={{height:200}} alt="cover" src="https://www.indiumsoft.com/Blog/wp-content/uploads/2017/10/gamer.png"/>
         <h5>Ryu ga Gotoku</h5>
