@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import AuthService from '../auth/auth-service';
-import { Link, Redirect } from 'react-router-dom';
 import axios from "axios";
 
 export default class SingleGameInfo extends Component {
@@ -66,17 +64,17 @@ export default class SingleGameInfo extends Component {
             } else { firstReleaseDate = 'not available' }
 
             let cover = null;
-            if (this.state.gameInfo[0].cover.cloudinary_id !== null) {
+            if (this.state.gameInfo[0].cover !== undefined) {
                 cover = `//images.igdb.com/igdb/image/upload/t_screenshot_med/${this.state.gameInfo[0].cover.cloudinary_id}.jpg`;
             } else { cover = `https://shop.purgatoryresort.com/bundles/spotliowebappfront/purgatoryresort/images/photo_not_available.jpg` }
 
             let screenshot = null;
-            if (this.state.gameInfo[0].screenshots[0].cloudinary_id !== null) {
+            if (this.state.gameInfo[0].screenshots !== undefined ) {
                 screenshot = `//images.igdb.com/igdb/image/upload/t_screenshot_med/${this.state.gameInfo[0].screenshots[0].cloudinary_id}.jpg`
             } else { screenshot = `https://shop.purgatoryresort.com/bundles/spotliowebappfront/purgatoryresort/images/photo_not_available.jpg` }
 
             let video = null;
-            if (this.state.gameInfo[0].videos[0].video_id !== null) {
+            if (this.state.gameInfo[0].videos !== undefined) {
                 video = `https://www.youtube.com/embed/${this.state.gameInfo[0].videos[0].video_id}`;
             } else { video = 'https://www.youtube.com/embed/tgbNymZ7vqY' }
 
@@ -98,7 +96,7 @@ export default class SingleGameInfo extends Component {
                     <img alt="img" src={screenshot} />
                     <hr />
                     <h3>Videos</h3>
-                    <iframe width="420" height="315" src={video} />
+                    <iframe title="view" width="420" height="315" src={video} />
                 </div>
             )
 
