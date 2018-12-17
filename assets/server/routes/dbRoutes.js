@@ -202,9 +202,12 @@ router.post('/removecoll', (req, res) => {
 
 router.post('/addgame', async (req, res) => {
     let { collectionId, game } = req.body;
+    console.log(collectionId);
+    console.log(game);
     let collectionIdObject = new mongoose.Types.ObjectId(collectionId);
-
-    let {name, idIgdb} = game;
+    console.log('ENTRA A LA RUTA DEL SERVIDOR')
+    let {name, id} = game;
+    let idIgdb = id;
 
     await console.log({ collectionId, idIgdb, name });
 

@@ -36,9 +36,6 @@ export default class GameFinder extends React.Component {
   addGameLocalHandler = (collectionId, game) => {
     // console.log(collectionId);
     // console.log(game);
-    console.log('entra');
-    // console.log(this.props)
-    // debugger
     this.props.addGameHandler(collectionId, game)
 
     // .then(()=>{

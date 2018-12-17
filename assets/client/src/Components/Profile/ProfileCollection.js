@@ -65,8 +65,6 @@ export default class ProfileCollection extends Component {
   }
 
   gameRemoveHandler = (collectionId, gameId) => {
-  
-    debugger
 
     this.service.removeGame(collectionId, gameId)
     .then(this.getCollectionData())
@@ -76,10 +74,8 @@ export default class ProfileCollection extends Component {
   }
 
   addGameHandler = (collectionId, game) => {
-    
-    console.log('entra');
-    debugger
-    
+    console.log(collectionId);
+    console.log(game);
     this.service.addGame(collectionId, game)
     .then(this.getCollectionData())
     .catch((err)=>{
@@ -114,7 +110,7 @@ export default class ProfileCollection extends Component {
             <h2 >{collection.name}</h2>
             <div>{gamesList}</div>
             <button value={i} onClick={(e) => { this.deleteCollection(e) }}>Delete</button>
-            <GameFinder addGameHandler={()=>this.addGameHandler()} collection={collection} user={this.props.user} />
+            <GameFinder addGameHandler={(collectionId,game)=>this.addGameHandler(collectionId, game)} collection={collection} user={this.props.user} />
           </div>
         )
       })

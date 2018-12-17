@@ -84,6 +84,8 @@ class CollService {
 
     addGame = (collectionId, game) =>{
         
+        console.log(collectionId);
+        console.log(game);
         let gameData = {collectionId, game};
         
         return this.service.post('/addgame', gameData)
