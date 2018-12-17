@@ -201,8 +201,10 @@ router.post('/removecoll', (req, res) => {
 })
 
 router.post('/addgame', async (req, res) => {
-    let { collectionId, idIgdb, name } = req.body;
+    let { collectionId, game } = req.body;
     let collectionIdObject = new mongoose.Types.ObjectId(collectionId);
+
+    let {name, idIgdb} = game;
 
     await console.log({ collectionId, idIgdb, name });
 

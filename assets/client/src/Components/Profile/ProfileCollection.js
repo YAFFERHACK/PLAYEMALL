@@ -47,6 +47,7 @@ export default class ProfileCollection extends Component {
 
   }
 
+
   getCollectionData = () => {
     this.service.userCollections()
       .then((populatedUser) => {
@@ -65,7 +66,21 @@ export default class ProfileCollection extends Component {
 
   gameRemoveHandler = (collectionId, gameId) => {
   
+    debugger
+
     this.service.removeGame(collectionId, gameId)
+    .then(this.getCollectionData())
+    .catch((err)=>{
+      console.log(err);
+    })
+  }
+
+  addGameHandler = (collectionId, game) => {
+    
+    console.log('entra');
+    debugger
+    
+    this.service.addGame(collectionId, game)
     .then(this.getCollectionData())
     .catch((err)=>{
       console.log(err);
@@ -83,11 +98,11 @@ export default class ProfileCollection extends Component {
 
     if (this.state.collections !== null) {
       this.collectionList = this.state.collections.map((collection, i) => {
-        let gamesList = collection.games.map((game) => {
+        let gamesList = collection.games.map((game, i) => {
           let gameId = game._id;
           let collectionId = collection._id;
           return (
-            <React.Fragment>
+            <React.Fragment key={i}>
               <h3>{game.name}</h3>
               <button onClick={() => this.gameRemoveHandler(collectionId, gameId)} >Remove</button>
             </React.Fragment>
@@ -99,7 +114,7 @@ export default class ProfileCollection extends Component {
             <h2 >{collection.name}</h2>
             <div>{gamesList}</div>
             <button value={i} onClick={(e) => { this.deleteCollection(e) }}>Delete</button>
-            <GameFinder collection={collection} user={this.props.user} />
+            <GameFinder addGameHandler={()=>this.addGameHandler()} collection={collection} user={this.props.user} />
           </div>
         )
       })

@@ -81,6 +81,21 @@ class CollService {
             console.log(err);
         })
     }
+
+    addGame = (collectionId, game) =>{
+        
+        let gameData = {collectionId, game};
+        
+        return this.service.post('/addgame', gameData)
+        .then((response)=>{
+            console.log('game successfully added');
+            return response.data
+        })
+        .catch((err)=>{
+            console.log('game addition failed');
+            console.log(err);
+        })
+    }
 }
 
 
