@@ -12,6 +12,7 @@ import GameExchanges from "./Components/GameExchangeDash/GameExchanges";
 import SinglePost from "./Components/GameExchangeDash/ExchangeSinglePost";
 import NewPost from "./Components/GameExchangeDash/NewPost";
 import Nav from './Components/Nav'
+import GameSearch from './Components/GameSearch';
 
 
 
@@ -84,6 +85,11 @@ class App extends Component {
             exact
             path="/newpost"
             render={(match) => <NewPost user={this.state.loggedInUser} {...match}/>}
+          />
+          <Route
+            exact
+            path="/gamesearch"
+            render={(match) => <GameSearch user={this.state.loggedInUser} {...match}/>}
           />
           {/* <Route exact path="/gameinfo" component={SingleGameInfo} /> */}
           {/* <LogoutRoute redirectTo='/login' /> */}
