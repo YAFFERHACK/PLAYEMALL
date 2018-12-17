@@ -66,6 +66,21 @@ class CollService {
             console.log(err);
         })
     }
+
+    removeGame = (collectionId, gameId) =>{
+
+        let collection = {collectionId, gameId};
+        
+        return this.service.post('/removefromcoll', collection)
+        .then((response)=>{
+            console.log('game successfully removed');
+            return response.data
+        })
+        .catch((err)=>{
+            console.log('game removal failed');
+            console.log(err);
+        })
+    }
 }
 
 
