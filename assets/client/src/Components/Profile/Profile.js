@@ -33,9 +33,6 @@ export default class Profile extends Component {
         <div className="profileDad">
           <ProfilePersonalDet user={this.props.user} />
           <ProfileCollection />
-          <Link to={`/`}>
-          <button>Home</button>
-        </Link>
         </div>
       )
     }

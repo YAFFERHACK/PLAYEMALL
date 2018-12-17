@@ -14,18 +14,11 @@ class Home extends Component {
     return (
       <div>
         <h1>Play 'Em All {this.props.username}</h1>
-        <Link to={`/login/`}>
-          <button>login</button>
-        </Link>
-        <Link to={`/signup/`}>
-          <button>signup</button>
-        </Link>
+        
         <Link to={`/gameinfo/343`}>
           <button>gameinfo</button>
         </Link>
-        <Link to={`/dashboard`}>
-          <button>Exchange Dashboard</button>
-        </Link>
+       
       </div>
     );
   }

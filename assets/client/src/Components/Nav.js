@@ -19,12 +19,14 @@ export default class Nav extends Component {
     } else {
       user =""
     }
+
+    
     return (
       <div>
         <div className="Nav">
         <nav className="navbar is-dark">
           <div className="navbar-brand">
-            <a className="navbar-item" href="https://bulma.io">
+            <a className="navbar-item navLogo" href="https://bulma.io">
               {" "}
               <img
                 src="https://okapy.es/image/cache/catalog/customer_designs/33-90ccb12f14fe5363fd0d270ebddec5ce-228x228.png"
@@ -69,13 +71,14 @@ export default class Nav extends Component {
                 {/* <a class="navbar-link">
           <img class="navImg" src={{user.imgPath}}> {{user.username}}/>
                     </a> */}
-                     
                    <a className="loginBtns" href="/login">  
                     <button className="button is-primary separation">Login</button>
                   </a> 
-                  {/* <a href="">   */}
-                    <button className="button is-info separation2" onClick={this.Getloggout}>Logout</button>
-                  {/* </a>  */}
+                   <a href="/signup"> 
+                  {/* <button className="button is-info separation2" onClick={this.Getloggout}>Logout</button> */}
+
+                    <button className="button is-info separation2" onClick={this.Getloggout}>Signup</button>
+                  </a>  
                 </p>
                 <p className="control" />
               </div>
