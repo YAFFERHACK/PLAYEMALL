@@ -164,6 +164,7 @@ router.get('/user-collections', (req, res) => {
         populate: {
             path: 'games'
             }
+            
     })
         .then((result) => {
             res.status(200).json(result);

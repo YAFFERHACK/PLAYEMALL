@@ -50,8 +50,10 @@ export default class ProfileCollection extends Component {
 
 
   getCollectionData = () => {
+    
     this.service.userCollections()
       .then((populatedUser) => {
+        console.log(populatedUser);
         // console.log('it did update');
         // console.log(this.state.collections);
         // console.log(populatedUser.collections);
@@ -59,8 +61,7 @@ export default class ProfileCollection extends Component {
         // if (this.state.collections === null || 
         //   this.state.collections.length !== populatedUser.collections.length ) 
         // { 
-          this.setState({ ...this.state, collections: populatedUser.collections 
-          }) 
+          this.setState({ ...this.state, collections: populatedUser.collections}) 
         // }
       })
   }
@@ -75,8 +76,8 @@ export default class ProfileCollection extends Component {
   }
 
   addGameHandler = (collectionId, game) => {
-    console.log(collectionId);
-    console.log(game);
+    // console.log(collectionId);
+    // console.log(game);
     this.service.addGame(collectionId, game)
     .then(this.getCollectionData())
     .catch((err)=>{
