@@ -8,7 +8,7 @@ export default class ProfileCollection extends Component {
     super()
     this.state = {
       collName: "",
-      collections: null,
+      collections: null
     }
 
     this.collectionList = null;
@@ -53,12 +53,13 @@ export default class ProfileCollection extends Component {
         // console.log('it did update');
         // console.log(this.state.collections);
         // console.log(populatedUser.collections);
-        debugger
-        if (this.state.collections === null || 
-          this.state.collections.length !== populatedUser.collections.length ) 
-        { 
+        
+        // if (this.state.collections === null || 
+        //   this.state.collections.length !== populatedUser.collections.length ) 
+        // { 
           this.setState({ ...this.state, collections: populatedUser.collections 
-          }) }
+          }) 
+        // }
       })
   }
 
