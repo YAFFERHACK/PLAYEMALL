@@ -1,5 +1,6 @@
 import { Switch, Route, Link } from "react-router-dom";
 import React, { Component } from "react";
+import Nav from './Nav'
 
 
 class Home extends Component {
@@ -12,6 +13,7 @@ class Home extends Component {
     console.log(this.props.user)
     return (
       <div>
+        <Nav />
         <h1>Play 'Em All {this.props.username}</h1>
         <Link to={`/login/`}>
           <button>login</button>

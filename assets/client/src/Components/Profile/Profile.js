@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ProfileCollection from './ProfileCollection';
 import ProfilePersonalDet from './ProfilePersonalDet';
 import './ProfileStyles.css';
+import { Link } from "react-router-dom";
 
 
 
@@ -32,6 +33,9 @@ export default class Profile extends Component {
         <div className="profileDad">
           <ProfilePersonalDet user={this.props.user} />
           <ProfileCollection />
+          <Link to={`/`}>
+          <button>Home</button>
+        </Link>
         </div>
       )
     }
