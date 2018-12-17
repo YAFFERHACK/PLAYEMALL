@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { Component } from "react";
+import GameSearch from './GameSearch'
+
 
 
 class Home extends Component {
@@ -22,6 +24,7 @@ class Home extends Component {
         <Link to={`/gameinfo/343`}>
           <button>gameinfo</button>
         </Link>
+        <GameSearch/>
       </div>
     );
   }
