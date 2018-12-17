@@ -8,6 +8,12 @@ import Profile from "./Components/Profile/Profile";
 import SingleGameInfo from "./Components/SingleGameInfo";
 import ProfileEdit from "./Components/Profile/ProfileEdit";
 import AuthService from "./auth/auth-service";
+import GameExchanges from "./Components/GameExchangeDash/GameExchanges";
+import SinglePost from "./Components/GameExchangeDash/ExchangeSinglePost";
+import NewPost from "./Components/GameExchangeDash/NewPost";
+import Nav from './Components/Nav'
+
+
 
 class App extends Component {
   constructor(props) {
@@ -39,6 +45,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Nav user={this.state.loggedInUser} logout={this.props.Getloggout}/ >
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route exact path='/gameinfo/:id' render ={(match)=> <SingleGameInfo {...match}/>}/>
@@ -63,9 +70,26 @@ class App extends Component {
             path="/editprofile"
             render={() => <ProfileEdit user={this.state.loggedInUser} />}
           />
+          <Route
+            exact
+            path="/dashboard"
+            render={() => <GameExchanges user={this.state.loggedInUser} />}
+          />
+          <Route
+            exact
+            path="/completepost/:id"
+            render={(match) => <SinglePost user={this.state.loggedInUser} {...match}/>}
+          />
+          <Route
+            exact
+            path="/newpost"
+            render={(match) => <NewPost user={this.state.loggedInUser} {...match}/>}
+          />
+          {/* <Route exact path="/gameinfo" component={SingleGameInfo} /> */}
           {/* <LogoutRoute redirectTo='/login' /> */}
         </Switch>
         <button onClick={this.Getloggout}>pepe se va</button>
+        {/* <Home/> */}
       </div>
     );
   }

@@ -1,0 +1,29 @@
+.separation {
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.separation2 {
+  margin-top: 5px;
+
+}
+
+.userNav {
+  margin-right: 10px;
+}
+
+.userNavImg {
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+
+.userNavName {
+  color: white;
+  font-weight: 600;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+
+.navLogo {
+  margin-left: 10px; 
+}

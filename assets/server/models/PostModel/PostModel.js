@@ -8,6 +8,7 @@ const PostSchema = Schema(
     content: String,
     price: Number,
     picPath: { type: String, default: "" },
+    igdbId: Number,
     // picsPath: {type: String, default:""},
     section: { type: String, enum: [""] } // !!!!
   },

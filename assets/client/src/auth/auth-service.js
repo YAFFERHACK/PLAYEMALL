@@ -26,7 +26,7 @@ class AuthService {
       })
       .catch((err) => {
         console.log('entra por el catch');
-        console.log(err.response.data.message, '<---');
+        // console.log(err.response.data.message, '<---');
       })
   }
 
@@ -37,7 +37,7 @@ class AuthService {
         return response.data
       })
       .catch((err) => {
-        console.log(err.response.data.message);
+        // console.log(err.response.data.message);
       })
   }
 

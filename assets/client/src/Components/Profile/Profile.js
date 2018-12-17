@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ProfileCollection from './ProfileCollection';
 import ProfilePersonalDet from './ProfilePersonalDet';
 import './ProfileStyles.css';
+import { Link } from "react-router-dom";
 
 
 
