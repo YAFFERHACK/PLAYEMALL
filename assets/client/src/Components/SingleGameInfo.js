@@ -65,7 +65,7 @@ export default class SingleGameInfo extends Component {
 
             let cover = null;
             if (this.state.gameInfo[0].cover !== undefined) {
-                cover = `//images.igdb.com/igdb/image/upload/t_screenshot_med/${this.state.gameInfo[0].cover.cloudinary_id}.jpg`;
+                cover = `//images.igdb.com/igdb/image/upload/t_cover_big/${this.state.gameInfo[0].cover.cloudinary_id}.jpg`;
             } else { cover = `https://shop.purgatoryresort.com/bundles/spotliowebappfront/purgatoryresort/images/photo_not_available.jpg` }
 
             let screenshot = null;

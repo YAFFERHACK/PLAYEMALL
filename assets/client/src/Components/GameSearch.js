@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
+import {Link} from "react-router-dom";
 
 
-export default class GameFinder extends React.Component {
+export default class GameSearch extends React.Component {
   constructor(props) {
     super(props)
 
@@ -33,18 +34,6 @@ export default class GameFinder extends React.Component {
 
   }
 
-  addGameLocalHandler = (collectionId, game) => {
-    // console.log(collectionId);
-    // console.log(game);
-    this.props.addGameHandler(collectionId, game)
-
-    // .then(()=>{
-    //   console.log('success')
-    // })
-    // .catch((err)=>{
-    //   console.log(err)
-    // })
-  }
 
   render() {
 
@@ -52,8 +41,7 @@ export default class GameFinder extends React.Component {
     if (this.state.games !== []) {
       gameList = this.state.games.map((game) => {
         return (
-          // <option onClick={this.addGameLocalHandler(this.props.collection._id, game)} value={this.props.collection._id}>{game.name}</option>
-          <div><h4>{game.name}</h4><button onClick={()=>{ this.addGameLocalHandler(this.props.collection._id, game)}} >AddGame</button></div>
+          <Link to={`/gameinfo/${game.id}`}><div><h4>{game.name}</h4></div></Link>
         )
       })
     }
