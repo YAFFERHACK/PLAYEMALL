@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import GameFinder from '../GameFinder'
 import CollService from "../../auth/collection-service";
+import {Link} from "react-router-dom";
 
 export default class ProfileCollection extends Component {
 
@@ -99,7 +100,7 @@ export default class ProfileCollection extends Component {
           let collectionId = collection._id;
           return (
             <React.Fragment key={i}>
-              <h3>{game.name}</h3>
+              <Link to={`/gameinfo/${game.idIgdb}`}><h3>{game.name}</h3></Link>
               <button onClick={() => this.gameRemoveHandler(collectionId, gameId)} >Remove</button>
             </React.Fragment>
 
