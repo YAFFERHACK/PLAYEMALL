@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import React, { Component } from "react";
 import Nav from './Nav'
+import GameSearch from './GameSearch'
+
 
 
 class Home extends Component {
@@ -19,6 +21,7 @@ class Home extends Component {
           <button>gameinfo</button>
         </Link>
        
+        <GameSearch/>
       </div>
     );
   }
