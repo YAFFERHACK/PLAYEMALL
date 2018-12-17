@@ -12,6 +12,7 @@ import AuthService from "./auth/auth-service";
 import GameExchanges from "./Components/GameExchangeDash/GameExchanges";
 import SinglePost from "./Components/GameExchangeDash/ExchangeSinglePost";
 import NewPost from "./Components/GameExchangeDash/NewPost";
+import Nav from './Components/Nav'
 
 
 
@@ -45,6 +46,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Nav user={this.state.loggedInUser} logout={this.props.Getloggout}/ >
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route exact path='/gameinfo/:id' render ={(match)=> <SingleGameInfo {...match}/>}/>
@@ -88,6 +90,7 @@ class App extends Component {
           {/* <LogoutRoute redirectTo='/login' /> */}
         </Switch>
         <button onClick={this.Getloggout}>pepe se va</button>
+        {/* <Home/> */}
       </div>
     );
   }

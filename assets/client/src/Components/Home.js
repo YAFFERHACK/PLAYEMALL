@@ -13,7 +13,6 @@ class Home extends Component {
     console.log(this.props.user)
     return (
       <div>
-        <Nav />
         <h1>Play 'Em All {this.props.username}</h1>
         <Link to={`/login/`}>
           <button>login</button>
