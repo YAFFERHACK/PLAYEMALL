@@ -13,6 +13,7 @@ import SinglePost from "./Components/GameExchangeDash/ExchangeSinglePost";
 import NewPost from "./Components/GameExchangeDash/NewPost";
 import Nav from './Components/Nav'
 import GameSearch from './Components/GameSearch';
+import MustPlay from './Components/MustPlay';
 
 
 
@@ -46,7 +47,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Nav user={this.state.loggedInUser} logout={this.props.Getloggout}/ >
+        <Nav user={this.state.loggedInUser} logout={this.props.Getloggout}/>
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route exact path='/gameinfo/:id' render ={(match)=> <SingleGameInfo {...match}/>}/>
@@ -90,6 +91,11 @@ class App extends Component {
             exact
             path="/gamesearch"
             render={(match) => <GameSearch user={this.state.loggedInUser} {...match}/>}
+          />
+          <Route
+            exact
+            path="/mustplay"
+            render={(match) => <MustPlay user={this.state.loggedInUser} {...match}/>}
           />
           {/* <Route exact path="/gameinfo" component={SingleGameInfo} /> */}
           {/* <LogoutRoute redirectTo='/login' /> */}

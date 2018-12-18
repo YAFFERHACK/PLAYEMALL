@@ -38,6 +38,31 @@ router.get('/igdbgames', (req, res) => {
         })
 })
 
+router.post('/mustplay', (req, res) => {
+    let {fields} = req.body;
+    console.log(fields);
+    client.games({
+        ids: [...fields],
+        // filters: {
+        //     'release_dates.date-gt': '2010-12-31',
+        //     'release_dates.date-lt': '2015-01-01',
+        //     'total_rating-gte':80
+        // },
+        fields: ['id', 'name', 'developers', 'publishers', 'total_rating', 'url', 'first_release_date','cover'],
+        expand: ['developers', 'publishers'],
+        limit: 20,
+        search: 'battlefield',
+    })
+        .then((response) => {
+            res.status(200).json(response.body);
+        })
+        .catch((err) => {
+            res.status(500).json(err);
+            console.log(err);
+            return err
+        })
+})
+
 
 router.get('/gameinfo/:id', (req, res) => {
 
@@ -163,8 +188,8 @@ router.get('/user-collections', (req, res) => {
         path: 'collections',
         populate: {
             path: 'games'
-            }
-            
+        }
+
     })
         .then((result) => {
             res.status(200).json(result);
@@ -178,39 +203,63 @@ router.get('/user-collections', (req, res) => {
 router.post('/removecoll', (req, res) => {
     let { id } = req.body;
 
-    User.findByIdAndUpdate(req.user.id, { $pull: { collections: id } }, { new: true })
-        .then((result) => {
-            console.log('update successful');
-            console.log(result);
-            res.status(200).json(result);
+    // User.findByIdAndUpdate(req.user.id, { $pull: { collections: id } }, { new: true })
+    //     .then((result) => {
+    //         console.log('update successful');
+    //         console.log(result);
+    //         Collection.findByIdAndRemove(id)
+    //         .then((res) => {
+    //             res.status(200).json(result);
+    //             console.log('removal successful');
+    //             console.log(res);
+    //         })
+    //         .catch((err) => {
+    //             console.log('removal failed');
+    //             console.log(err);
+    //         })
+    //     })
+    //     .catch((err) => {
+    //         console.log('update failed');
+    //         console.log(err);
+    //         res.status(500).json(err);
+    //     })
+
+    Promise.all([
+        User.findByIdAndUpdate(req.user.id, { $pull: { collections: id } }, { new: true }),
+        Collection.findByIdAndRemove(id)
+    ])
+        .then(result => {
+            const userUpdate = result[0]
+            res.status(200).json({ result: userUpdate })
         })
-        .catch((err) => {
-            console.log('update failed');
+        .catch(err => {
             console.log(err);
-            res.status(500).json(err);
+            res.status(500).json(err)
         })
 
-    Collection.findByIdAndRemove(id)
-        .then((res) => {
-            console.log('removal successful');
-            console.log(res);
-        })
-        .catch((err) => {
-            console.log('removal failed');
-            console.log(err);
-        })
 })
 
 router.post('/addgame', async (req, res) => {
     let { collectionId, game } = req.body;
-    console.log(collectionId);
-    console.log(game);
-    let collectionIdObject = new mongoose.Types.ObjectId(collectionId);
-    console.log('ENTRA A LA RUTA DEL SERVIDOR')
-    let {name, id} = game;
+    // console.log(collectionId);
+    // console.log(game);
+    // console.log('ENTRA A LA RUTA DEL SERVIDOR')
+    let { name, id } = game;
+    if (game.url !== undefined) { let { url } = game } else { let url = 'not available' }
+    if (game.summary !== undefined) { let { summary } = game } else { let summary = 'not available' }
+    if (game.rating !== undefined) { let { rating } = game } else { let rating = 'not available' }
+    if (game.publishers !== undefined) { let { publishers } = game } else { let publishers = 'not available' }
+    if (game.first_release_date !== undefined) { let { first_release_date } = game } else { let first_release_date = 'not available' }
+    if (game.genres !== undefined) { let { genres } = game } else { let genres = 'not available' }
+    if (game.platforms !== undefined) { let { platforms } = game } else { let platforms = 'not available' }
+    if (game.screenshots !== undefined) { let { screenshots } = game } else { let screenshots = 'not available' }
+    if (game.videos !== undefined) { let { videos } = game } else { let videos = 'not available' }
+    if (game.cover !== undefined) { let { cover } = game } else { let cover = 'not available' }
+
+
     let idIgdb = id;
 
-    await console.log({ collectionId, idIgdb, name });
+    // await console.log({ collectionId, idIgdb, name });
 
     let alreadyInDb = false;
     let gameId = null;
@@ -222,14 +271,14 @@ router.post('/addgame', async (req, res) => {
         }
 
         if (foundGame) {
-            console.log(foundGame);
+            // console.log(foundGame);
             alreadyInDb = true;
             gameId = foundGame._id;
             return;
         }
     });
 
-    await console.log("already in Db: " + alreadyInDb);
+    // await console.log("already in Db: " + alreadyInDb);
 
     if (!alreadyInDb) {
         let newGame = new Game({
@@ -244,7 +293,7 @@ router.post('/addgame', async (req, res) => {
                     .json({ message: "Saving game to database went wrong." });
                 return;
             }
-            res.status(200).json(newGame);
+
             return newGame
         });
 
@@ -254,9 +303,9 @@ router.post('/addgame', async (req, res) => {
     await Collection.findByIdAndUpdate(collectionId, { $addToSet: { games: gameId } }, { new: true })
         .then((result) => {
             console.log(result);
-            if (alreadyInDb) {
-                res.status(200).json(result);
-            }
+            // if (alreadyInDb) {
+            //     res.status(203).json(result);
+            // }
         })
         .catch((err) => {
             console.log(err);
@@ -264,10 +313,11 @@ router.post('/addgame', async (req, res) => {
 
     await Game.findByIdAndUpdate(gameId, { $addToSet: { collections: collectionId } }, { new: true })
         .then((result) => {
-            console.log(result);
+            // console.log(result);
             // if (alreadyInDb) {
             //     res.status(200).json(result);
             // }
+            res.status(202).json({ msg: 'OK' });
         })
         .catch((err) => {
             console.log(err);

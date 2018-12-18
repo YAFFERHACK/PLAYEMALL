@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import GameFinder from '../GameFinder'
 import CollService from "../../auth/collection-service";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default class ProfileCollection extends Component {
 
@@ -50,18 +50,21 @@ export default class ProfileCollection extends Component {
 
 
   getCollectionData = () => {
-    
+
     this.service.userCollections()
       .then((populatedUser) => {
-        console.log(populatedUser);
+        // console.log(populatedUser);
         // console.log('it did update');
         // console.log(this.state.collections);
         // console.log(populatedUser.collections);
-        
+
         // if (this.state.collections === null || 
         //   this.state.collections.length !== populatedUser.collections.length ) 
         // { 
-          this.setState({ ...this.state, collections: populatedUser.collections}) 
+        if (this.props.user) {
+          console.log(populatedUser)
+          this.setState({ ...this.state, collections: populatedUser.collections })
+        }
         // }
       })
   }
@@ -69,20 +72,28 @@ export default class ProfileCollection extends Component {
   gameRemoveHandler = (collectionId, gameId) => {
 
     this.service.removeGame(collectionId, gameId)
-    .then(this.getCollectionData())
-    .catch((err)=>{
-      console.log(err);
-    })
+      .then((response) => {
+        // console.log(response)
+        return response
+      })
+      .then(() => this.getCollectionData())
+      .catch((err) => {
+        console.log(err);
+      })
   }
 
   addGameHandler = (collectionId, game) => {
     // console.log(collectionId);
     // console.log(game);
     this.service.addGame(collectionId, game)
-    .then(this.getCollectionData())
-    .catch((err)=>{
-      console.log(err);
-    })
+      .then((response) => {
+        console.log(response)
+        return response
+      })
+      .then(() => this.getCollectionData())
+      .catch((err) => {
+        console.log(err);
+      })
   }
 
   componentDidMount() {
@@ -112,7 +123,7 @@ export default class ProfileCollection extends Component {
             <h2 >{collection.name}</h2>
             <div>{gamesList}</div>
             <button value={i} onClick={(e) => { this.deleteCollection(e) }}>Delete</button>
-            <GameFinder addGameHandler={(collectionId,game)=>this.addGameHandler(collectionId, game)} collection={collection} user={this.props.user} />
+            <GameFinder addGameHandler={(collectionId, game) => this.addGameHandler(collectionId, game)} collection={collection} user={this.props.user} />
           </div>
         )
       })
