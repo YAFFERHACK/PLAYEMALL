@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import AuthService from '../auth/auth-service';
-import { Link, Redirect } from 'react-router-dom';
 import axios from "axios";
 
 export default class SingleGameInfo extends Component {
@@ -67,7 +65,7 @@ export default class SingleGameInfo extends Component {
 
             let cover = null;
             if (this.state.gameInfo[0].cover !== undefined) {
-                cover = `//images.igdb.com/igdb/image/upload/t_screenshot_med/${this.state.gameInfo[0].cover.cloudinary_id}.jpg`;
+                cover = `//images.igdb.com/igdb/image/upload/t_cover_big/${this.state.gameInfo[0].cover.cloudinary_id}.jpg`;
             } else { cover = `https://shop.purgatoryresort.com/bundles/spotliowebappfront/purgatoryresort/images/photo_not_available.jpg` }
 
             let screenshot = null;
@@ -98,7 +96,7 @@ export default class SingleGameInfo extends Component {
                     <img alt="img" src={screenshot} />
                     <hr />
                     <h3>Videos</h3>
-                    <iframe width="420" height="315" src={video} />
+                    <iframe title="view" width="420" height="315" src={video} />
                 </div>
             )
 

@@ -1,6 +1,8 @@
-import { Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import React, { Component } from "react";
 import Nav from './Nav'
+
+
 
 
 class Home extends Component {
@@ -18,7 +20,7 @@ class Home extends Component {
         <Link to={`/gameinfo/343`}>
           <button>gameinfo</button>
         </Link>
-       
+    
       </div>
     );
   }

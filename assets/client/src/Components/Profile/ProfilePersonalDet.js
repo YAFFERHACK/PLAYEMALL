@@ -11,9 +11,6 @@ export default class ProfilePersonalDet extends Component {
       return <div><h1>...CARGANDO JOPUTA</h1></div>
     } else {
       
-    const prueba = this.props.user
-    console.log(prueba)
-    console.log("este")
     return (
       <div>
         <img className="profImg" alt="profileImg" src={this.props.user.profileImg} style={{width:250}}/>

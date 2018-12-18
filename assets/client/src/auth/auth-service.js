@@ -33,7 +33,7 @@ class AuthService {
   loggedin = () => {
     return this.service.get('/loggedin')
       .then(response => { 
-        console.log(response.data)
+        // console.log(response.data)
         return response.data
       })
       .catch((err) => {

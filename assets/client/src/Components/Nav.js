@@ -61,10 +61,10 @@ export default class Nav extends Component {
               <a className="navbar-item" href="/dashboard">
                 Dashboard
               </a>
-              <a className="navbar-item" href="/gameinfo/11375">
+              <a className="navbar-item" href="/gamesearch">
                 Games
               </a>
-              <a className="navbar-item" href="/">
+              <a className="navbar-item" href="/mustplay">
                 Must Play
               </a>
               

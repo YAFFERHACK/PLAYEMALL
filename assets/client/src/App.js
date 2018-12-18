@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Home from "./Components/Home";
 import Login from "./Components/UserLogin/Login";
 import Signup from "./Components/Signup";
@@ -13,6 +12,8 @@ import GameExchanges from "./Components/GameExchangeDash/GameExchanges";
 import SinglePost from "./Components/GameExchangeDash/ExchangeSinglePost";
 import NewPost from "./Components/GameExchangeDash/NewPost";
 import Nav from './Components/Nav'
+import GameSearch from './Components/GameSearch';
+import MustPlay from './Components/MustPlay';
 
 
 
@@ -28,7 +29,7 @@ class App extends Component {
     this.auth
       .loggedin()
       .then(user => {
-        console.log(user);
+        // console.log(user);
         this.setState({ ...this.state, loggedInUser: user })});
   };
 
@@ -46,7 +47,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Nav user={this.state.loggedInUser} logout={this.props.Getloggout}/ >
+        <Nav user={this.state.loggedInUser} logout={this.props.Getloggout}/>
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route exact path='/gameinfo/:id' render ={(match)=> <SingleGameInfo {...match}/>}/>
@@ -85,6 +86,16 @@ class App extends Component {
             exact
             path="/newpost"
             render={(match) => <NewPost user={this.state.loggedInUser} {...match}/>}
+          />
+          <Route
+            exact
+            path="/gamesearch"
+            render={(match) => <GameSearch user={this.state.loggedInUser} {...match}/>}
+          />
+          <Route
+            exact
+            path="/mustplay"
+            render={(match) => <MustPlay user={this.state.loggedInUser} {...match}/>}
           />
           {/* <Route exact path="/gameinfo" component={SingleGameInfo} /> */}
           {/* <LogoutRoute redirectTo='/login' /> */}

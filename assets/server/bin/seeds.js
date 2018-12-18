@@ -17,7 +17,7 @@ const Comment = require("../models/CommentModel/CommentModel");
 const bcryptSalt = 10;
 
 mongoose
-  .connect(process.env.DBLOCALPATH, {useNewUrlParser: true})
+  .connect(process.env.DBURL, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
