@@ -54,49 +54,66 @@ class CollService {
             })
     }
 
-    removeCollection = (id) =>{
-        let collection = {id}
+    removeCollection = (id) => {
+        let collection = { id }
         return this.service.post('/removecoll', collection)
-        .then((response)=>{
-            console.log('collection successfully removed');
-            return response.data
-        })
-        .catch((err)=>{
-            console.log('collection removal failed');
-            console.log(err);
-        })
+            .then((response) => {
+                console.log('collection successfully removed');
+                return response.data
+            })
+            .catch((err) => {
+                console.log('collection removal failed');
+                console.log(err);
+            })
     }
 
-    removeGame = (collectionId, gameId) =>{
+    removeGame = (collectionId, gameId) => {
 
-        let collection = {collectionId, gameId};
-        
+        let collection = { collectionId, gameId };
+
         return this.service.post('/removefromcoll', collection)
-        .then((response)=>{
-            console.log('game successfully removed');
-            return response.data
-        })
-        .catch((err)=>{
-            console.log('game removal failed');
-            console.log(err);
-        })
+            .then((response) => {
+                console.log('game successfully removed');
+                return response.data
+            })
+            .catch((err) => {
+                console.log('game removal failed');
+                console.log(err);
+            })
     }
 
-    addGame = (collectionId, game) =>{
-        
-        console.log(collectionId);
-        console.log(game);
-        let gameData = {collectionId, game};
-        
+    addGame = (collectionId, game) => {
+
+        // console.log(collectionId);
+        // console.log(game);
+        let gameData = { collectionId, game };
+
         return this.service.post('/addgame', gameData)
-        .then((response)=>{
-            console.log('game successfully added');
-            return response.data
-        })
-        .catch((err)=>{
-            console.log('game addition failed');
-            console.log(err);
-        })
+            .then((response) => {
+                // console.log('game successfully added');
+                return response.data
+            })
+            .catch((err) => {
+                console.log('game addition failed');
+                console.log(err);
+            })
+    }
+
+    mustPlay = (fields) => {
+        return this.service.post('/mustplay', {fields})
+            .then((response) => {
+                console.log(fields);
+                console.log('entra al then');
+                console.log(response.data);
+                return response.data
+            })
+            .catch((err) => {
+                console.log(fields);
+                console.log('entra al catch');
+                console.log(err);
+            })
+
+
     }
 }
 
