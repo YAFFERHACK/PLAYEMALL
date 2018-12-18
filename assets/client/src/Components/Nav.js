@@ -20,6 +20,15 @@ export default class Nav extends Component {
       user =""
     }
 
+    // let btn =""
+    // if (this.props.user !== null && this.props.user !== undefined) {
+    //   btn = (
+        
+    //   )
+    // } else {
+    //   btn = (
+    //   )
+    // }
     
     return (
       <div>
@@ -90,3 +99,5 @@ export default class Nav extends Component {
     )
   }
 }
+
+
