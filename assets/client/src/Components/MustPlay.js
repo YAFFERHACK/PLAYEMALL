@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import CollService from "../auth/collection-service";
 import axios from "axios";
+import Loading from './Loading';
+
 
 export default class MustPlay extends Component {
     constructor() {
@@ -35,7 +37,7 @@ export default class MustPlay extends Component {
         if (this.state.gameInfo === null) {
             return (
                 <div>
-                    <h1>Loading...</h1>
+                    <Loading/>
                 </div>
             )
         } else {

@@ -35,7 +35,7 @@ export default class Nav extends Component {
         <div className="Nav">
         <nav className="navbar is-dark">
           <div className="navbar-brand">
-            <a className="navbar-item navLogo" href="/">
+            <a className="navbar-item navLogo" href="https://i.imgur.com/ANsUGQw.gif" target="_blank" rel="">
               {" "}
               <img
                 src="https://okapy.es/image/cache/catalog/customer_designs/33-90ccb12f14fe5363fd0d270ebddec5ce-228x228.png"

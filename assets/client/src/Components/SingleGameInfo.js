@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import Loading2 from './Loading2';
 
 export default class SingleGameInfo extends Component {
     constructor() {
@@ -31,7 +32,7 @@ export default class SingleGameInfo extends Component {
         if (this.state.gameInfo === null) {
             return (
                 <div>
-                    <h1>Loading...</h1>
+                    <Loading2/>
                 </div>
             )
         } else {
