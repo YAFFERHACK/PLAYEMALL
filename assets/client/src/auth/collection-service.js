@@ -1,9 +1,10 @@
 import axios from "axios";
+require('dotenv').config()
 
 class CollService {
     constructor() {
         let service = axios.create({
-            baseURL: "http://localhost:5000/api/dbroutes",
+            baseURL:`${process.env.REACT_APP_API_URL}/dbroutes`,
             withCredentials: true
         });
         this.service = service;

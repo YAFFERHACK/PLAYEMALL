@@ -1,9 +1,10 @@
 import axios from "axios";
+require('dotenv').config()
 
 class AuthService {
   constructor() {
     let service = axios.create({
-      baseURL: "http://localhost:5000/auth",
+      baseURL: `${process.env.REACT_APP_API_URL}/auth`,
       withCredentials: true
     });
     this.service = service;

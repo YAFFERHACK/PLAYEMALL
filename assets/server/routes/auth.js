@@ -16,8 +16,11 @@ const bcryptSalt = 10;
 
 
 router.post('/login', (req, res, next) => {
+    console.log('asdf')
+
         passport.authenticate('local', (err, theUser, failureDetails) => {
             if (err) {
+                console.log(err)
                 res.status(403).json({ message: 'Something went wrong authenticating user' });
                 return;
             }
@@ -29,9 +32,11 @@ router.post('/login', (req, res, next) => {
                 return;
             }
 
+
             // save user in session
             req.login(theUser, (err) => {
                 if (err) {
+                    console.log(err);
                     res.status(500).json({ message: 'Session save went bad.' });
                     return;
                 }

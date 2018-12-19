@@ -1,9 +1,10 @@
 import axios from "axios";
+require('dotenv').config()
 
 class PostService {
   constructor() {
     let service = axios.create({
-      baseURL: "http://localhost:5000/post",
+      baseURL: `${process.env.REACT_APP_API_URL}/post`,
       withCredentials: true
     });
     this.service = service;
