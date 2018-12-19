@@ -14,6 +14,7 @@ import NewPost from "./Components/GameExchangeDash/NewPost";
 import Nav from './Components/Nav'
 import GameSearch from './Components/GameSearch';
 import MustPlay from './Components/MustPlay';
+import Loading2 from "./Components/Loading2";
 
 
 
@@ -96,6 +97,11 @@ class App extends Component {
             exact
             path="/mustplay"
             render={(match) => <MustPlay user={this.state.loggedInUser} {...match}/>}
+          />
+          <Route
+            exact
+            path="/loading2"
+            render={(match) => <Loading2 user={this.state.loggedInUser} {...match}/>}
           />
           {/* <Route exact path="/gameinfo" component={SingleGameInfo} /> */}
           {/* <LogoutRoute redirectTo='/login' /> */}

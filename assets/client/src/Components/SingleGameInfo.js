@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import Loading2 from './Loading2';
+import "./SingleGameInfo.css";
 
 export default class SingleGameInfo extends Component {
     constructor() {
@@ -81,23 +82,23 @@ export default class SingleGameInfo extends Component {
 
 
             return (
-                <div>
-                    <img alt="cover" src={cover} />
-                    <h1>{this.state.gameInfo[0].name}</h1>
-                    <hr />
-                    <p>Genre: {genres}</p>
-                    <p>Release date: {firstReleaseDate}</p>
-                    <p>Platforms: {platforms}</p>
-                    <p>rating: {this.state.gameInfo[0].total_rating}</p>
-                    <p>Summary: {this.state.gameInfo[0].summary}</p>
-                    <p>Publishers: {publishers}</p>
-                    <p><a href={this.state.gameInfo[0].url} >{this.state.gameInfo[0].name}@IGDB</a></p>
-                    <hr />
-                    <p>Screenshots</p>
-                    <img alt="img" src={screenshot} />
-                    <hr />
-                    <h3>Videos</h3>
-                    <iframe title="view" width="420" height="315" src={video} />
+                <div className="singleGameCont">
+                    <img className="coverGameInfo" alt="cover" src={cover} />
+                    <h1 className="titleGameInfo">{this.state.gameInfo[0].name}</h1>
+                    <p className="genreGameInfo"><b>Genre:</b> {genres}</p>
+                    <p className="releaseGameInfo"><b>Release date:</b> {firstReleaseDate}</p>
+                    <p className="platGameInfo"><b>Platforms:</b> {platforms}</p>
+                    <p className="rateGameInfo"><b>rating:</b> {this.state.gameInfo[0].total_rating}</p>
+                    <p className="publiGameInfo"><b>Publishers:</b> {publishers}</p>
+                    <p className="pUrlInfo"><a className="urlGameInfo" href={this.state.gameInfo[0].url}><b>Info:</b>{this.state.gameInfo[0].name}@IGDB</a></p>
+                    <p><b>Summary</b></p>
+                    <p className="summaryGameInfo"> {this.state.gameInfo[0].summary}</p>
+                    
+                    <p className="screenGameInfo"><b>Screenshots</b></p>
+                    <img className="screen2GameInfo" alt="img" src={screenshot} />
+                    
+                    <h3 className="videoTitleInfo"><b>Videos</b></h3>
+                    <iframe className="videoGameInfo" title="view" width="420" height="315" src={video} />
                 </div>
             )
 
