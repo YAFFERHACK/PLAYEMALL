@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+require('dotenv').config()
 
 
 export default class GameFinder extends React.Component {
@@ -19,7 +20,7 @@ export default class GameFinder extends React.Component {
 
   findHandler = () => {
 
-    axios.get(`http://localhost:5000/api/dbroutes/gamesearch/${this.state.searchField}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/dbroutes/gamesearch/${this.state.searchField}`)
       .then((response) => {
         console.log('findHandler axios then')
         this.setState({ ...this.state, games: [...response.data] }, function () {
