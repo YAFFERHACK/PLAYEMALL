@@ -65,6 +65,7 @@ export default class MustPlay extends Component {
                     rating = '-'
                 }
                 
+                
 
                 return (
                     <div className="mustCont">
@@ -75,9 +76,10 @@ export default class MustPlay extends Component {
                     </div>
                 )
             })
-
+            
             return (
                 <div className="mustBig">
+                {/* <img alt="" src="./images/mustplay.png"/> */}
 
                     {gamecards}
 

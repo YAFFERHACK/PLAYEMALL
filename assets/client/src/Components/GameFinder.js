@@ -66,7 +66,7 @@ export default class GameFinder extends React.Component {
         <input type="text" name="searchField" id="searchField" onChange={(e) => { this.handleChange(e) }} />
         <button onClick={() => this.findHandler()}>Find!</button>
         <div onClick={() => { this.setState({ ...this.state, deployed: !this.state.deployed }) }} class={dropDownClass}>
-          <div className="dropdown is-up">
+          <div className="dropdown is-right">
             <div class="dropdown-trigger">
               <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
                 <span>Results</span>
