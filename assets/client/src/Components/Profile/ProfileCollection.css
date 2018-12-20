@@ -1,0 +1,52 @@
+.collections-title{
+  margin-bottom: 10%;
+  font-size: 200%;
+}
+.collections-parent{
+  box-shadow: -10px 10px 30px 1px rgba(0, 0, 0, 0.75);
+  background: rgba(255,255,255,.8);
+  border-radius: 20px 20px 20px 20px;
+  padding: 50px;
+}
+.collections-container{
+  display:flex;
+  flex-flow:row nowrap;
+  margin-bottom:8%;
+}
+.game-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: solid 1px lightgrey;
+}
+.collection-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3% 0 3% 0;
+}
+.collection-title{
+  font-size:130%;
+  color:black;
+}
+.games-container{
+  max-height: 200px;
+  overflow-y: scroll;
+}
+.rmv{
+  max-width:0px;
+  margin-right: 3%;
+}
+.mr3{
+  margin-right: 3%;
+}
+
+.removeColl {
+  margin-top: 1%;
+  margin-top: 5%;
+    background-color: lavenderblush;
+}
+
+
+

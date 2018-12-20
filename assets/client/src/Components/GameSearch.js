@@ -60,6 +60,7 @@ export default class GameSearch extends React.Component {
 
     return (
       <div className="gamesearch-container">
+        <h1 className="gameSearchTitle">Game Search</h1>
         <input className="searchBarGame" type="text" name="searchField" id="searchField" placeholder="enter a title here" onChange={(e) => { this.handleChange(e) }} />
         <button id="find-button" className="button is-light" onClick={() => this.findHandler()}>Find!</button>
         <div onClick={() => { this.setState({ ...this.state, deployed: !this.state.deployed }) }} className={dropDownClass}>

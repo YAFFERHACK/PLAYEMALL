@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import './ProfileStyles.css';
 import './Profile.css';
+import Loading3 from '../Loading3';
 
 
 export default class ProfilePersonalDet extends Component {
@@ -9,7 +10,7 @@ export default class ProfilePersonalDet extends Component {
 
   render() {
     if (this.props.user === null) {
-      return <div><h1>...CARGANDO JOPUTA</h1></div>
+      return <div><Loading3/></div>
     } else {
       
     return (

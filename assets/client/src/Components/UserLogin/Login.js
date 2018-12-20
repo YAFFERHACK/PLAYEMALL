@@ -41,7 +41,7 @@ class Login extends Component {
           
           <input className="login button is-link mb3" type="submit" value="Login" />
         </form>
-        <p className="mb3">Don't have an account? 
+        <p className="mb3 lastLogin">Don't have an account? 
             <Link to={"/signup"}> Signup</Link>
         </p>
       </div>

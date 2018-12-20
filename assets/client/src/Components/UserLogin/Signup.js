@@ -48,6 +48,7 @@ class Signup extends Component {
         <form onSubmit={this.handleFormSubmit}>
           <label>Username:</label>
           <input
+            className="fieldsSign"
             type="text"
             name="username"
             value={this.state.username}
@@ -56,6 +57,7 @@ class Signup extends Component {
 
           <label>Password:</label>
           <input
+            className="fieldsSign" 
             type="text"
             name="password"
             value={this.state.password}
@@ -130,7 +132,7 @@ class Signup extends Component {
           <input type="submit" value="Signup" />
         </form>
 
-        <p>
+        <p className="lastSign">
           Already have account? Don't be shy!
           <Link to={"/login"}> Login</Link>
         </p>

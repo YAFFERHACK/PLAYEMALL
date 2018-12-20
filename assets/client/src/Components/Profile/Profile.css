@@ -44,18 +44,28 @@
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 10%;
-  background-color: mediumslateblue;
-  color: lavenderblush;
+  background-color: lavenderblush;
+  color: black;
   font-size: 16px;
-  cursor: url(https://www.clipartmax.com/png/middle/154-1547403_amusing-middle-finger-clip-art-medium-size-gta-v-cursor-png.png), auto;
 }
 
-.editBtn:hover
-{
-        box-shadow:
-                1px 1px #000000,
-                2px 2px #000000,
-                3px 3px #000000;
-        -webkit-transform: translateX(-3px);
-        transform: translateX(-3px);
+@keyframes bounce {
+  0%, 20%, 60%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  
+  40% {
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+  
+  80% {
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
+}
+
+.editBtn:hover {
+  animation: bounce 1s;
 }
