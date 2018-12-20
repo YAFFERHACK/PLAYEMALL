@@ -15,6 +15,7 @@ import Nav from './Components/Nav'
 import GameSearch from './Components/GameSearch';
 import MustPlay from './Components/MustPlay';
 import Loading from "./Components/Loading";
+import Loading2 from "./Components/Loading2";
 
 
 
@@ -99,11 +100,6 @@ class App extends Component {
             exact
             path="/mustplay"
             render={(match) => <MustPlay user={this.state.loggedInUser} {...match}/>}
-          />
-          <Route
-            exact
-            path="/loading"
-            render={(match) => <Loading user={this.state.loggedInUser} {...match}/>}
           />
           {/* <Route exact path="/gameinfo" component={SingleGameInfo} /> */}
           {/* <LogoutRoute redirectTo='/login' /> */}

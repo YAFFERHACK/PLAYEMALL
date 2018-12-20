@@ -5,6 +5,7 @@ import AuthService from "../../../src/auth/auth-service.js";
 import PostService from "../../auth/post-service.js";
 import './ExchangeSinglePost.css';
 
+
 export default class SinglePost extends Component {
   constructor(props) {
     super(props);
@@ -35,8 +36,8 @@ export default class SinglePost extends Component {
         <h4 className="postComContent">{this.state.posts.content}</h4>
         {/* <h4 className="postComUrl">{this.state.posts.igdbId}</h4> */}
         <h4 className="postComPrice"><b>Precio:</b> {this.state.posts.price} euros</h4>
-        <Link to={`/dashboard`}>
-          <button className="postComBtn">Volver</button>
+        <Link className="postComBtn" to={`/dashboard`}>
+          <button className="postComBtn">Back</button>
         </Link>
         </div>
 

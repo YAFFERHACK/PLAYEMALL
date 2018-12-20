@@ -5,6 +5,8 @@
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
+  max-height: calc(100vh);
+  overflow-y: scroll;
 }
 
 .App-logo {
