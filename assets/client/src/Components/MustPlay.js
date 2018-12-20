@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CollService from "../auth/collection-service";
 import axios from "axios";
 import Loading from './Loading';
+import './MustPlay.css';
 
 
 export default class MustPlay extends Component {
@@ -66,17 +67,17 @@ export default class MustPlay extends Component {
                 
 
                 return (
-                    <div>
-                        <img src={cover} alt="gamecover" />
-                        <h1>{game.name}</h1>
-                        <h3>{publishers}</h3>
-                        <h3>{rating}</h3>
+                    <div className="mustCont">
+                        <img className="mustImg" src={cover} alt="gamecover" />
+                        <h1 className="mustName">{game.name}</h1>
+                        <h3 className="mustPubli">{publishers}</h3>
+                        <h3 className="mustRate">{rating}</h3>
                     </div>
                 )
             })
 
             return (
-                <div>
+                <div className="mustBig">
 
                     {gamecards}
 

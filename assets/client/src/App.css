@@ -1,7 +1,12 @@
 .App {
   text-align: center;
-  background: greenyellow;
+  /* background: pink; */
+  background-image: url(./images/bg5fi.png);
+  background-size: cover;
+  background-repeat: no-repeat;
   height: 100vh;
+  max-height: calc(100vh);
+  overflow-y: scroll;
 }
 
 .App-logo {
@@ -32,3 +37,14 @@
     transform: rotate(360deg);
   }
 }
+
+/* button:after{
+  width: 200%;
+  transform-origin: 0 bottom;
+  transform: translate3D(-50%,0,0) rotate(-50deg);
+}
+
+button:hover:after{
+  transform: rotate(0deg);
+  transition: all .5s;
+} */

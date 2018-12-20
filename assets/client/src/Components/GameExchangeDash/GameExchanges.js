@@ -3,6 +3,8 @@ import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import AuthService from "../../../src/auth/auth-service.js";
 import PostService from "../../auth/post-service.js";
+import './GameExchanges.css';
+
 
 export default class GameExchanges extends Component {
   constructor(props) {
@@ -26,23 +28,28 @@ export default class GameExchanges extends Component {
       console.log(this.props.post);
       postSnippet = this.state.posts.map(post => {
         return (
-          <div>
-            <img alt="imgPostSnippet" src={post.picPath} />
-            <h1>{post.title}</h1>
+          <div className="postPrevFlex">
+          <div className="postPrevCont">
+            <img className="postPrevImg" alt="imgPostSnippet" src={post.picPath} />
+            <h1 className="postPrevTitle">{post.title}</h1>
             <Link to={`/completepost/${post._id}`}>
-              <button>Ver anuncio</button>
+              <button className="postPrevBtn">Ver anuncio</button>
             </Link>
-            <br />
+            
             <hr />
-            <br />
-            <Link to={`/newpost`}>
-              <button>Nuevo anuncio</button>
-            </Link>
+            
+          </div>
           </div>
         );
         // console.log(postSnippet);
       });
     }
-    return <div>{postSnippet}</div>;
+    return <div className="scroll">
+            <Link to={`/newpost`}>
+              <button className="postPrevBtnNew">Nuevo anuncio</button>
+            </Link>
+    {postSnippet}
+    
+    </div>;
   }
 }

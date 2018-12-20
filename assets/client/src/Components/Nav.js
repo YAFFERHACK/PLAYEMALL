@@ -6,7 +6,9 @@ import App from '../App'
 
 
 export default class Nav extends Component {
-  
+  constructor(props){
+    super(props);
+  }
   
   render() {
     let user=""
@@ -80,14 +82,23 @@ export default class Nav extends Component {
                 {/* <a class="navbar-link">
           <img class="navImg" src={{user.imgPath}}> {{user.username}}/>
                     </a> */}
-                   <a className="loginBtns" href="/login">  
+                   {user ? 
+                   <a  href="/logout">
+                   <button className="button is-info separation2" onClick={this.props.logout}>Logout</button>
+                 </a> :
+                 <div>
+
+                 <a className="loginBtns" href="/login">  
                     <button className="button is-primary separation">Login</button>
                   </a> 
                    <a href="/signup"> 
-                  {/* <button className="button is-info separation2" onClick={this.Getloggout}>Logout</button> */}
 
                     <button className="button is-info separation2" onClick={this.Getloggout}>Signup</button>
                   </a>  
+                 </div>
+                   }
+                   
+                  
                 </p>
                 <p className="control" />
               </div>

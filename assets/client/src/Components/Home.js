@@ -15,11 +15,8 @@ class Home extends Component {
     console.log(this.props.user)
     return (
       <div>
-        <h1>Play 'Em All {this.props.username}</h1>
         
-        <Link to={`/gameinfo/343`}>
-          <button>gameinfo</button>
-        </Link>
+        
     
       </div>
     );

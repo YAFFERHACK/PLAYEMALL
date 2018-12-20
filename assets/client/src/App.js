@@ -14,6 +14,7 @@ import NewPost from "./Components/GameExchangeDash/NewPost";
 import Nav from './Components/Nav'
 import GameSearch from './Components/GameSearch';
 import MustPlay from './Components/MustPlay';
+import Loading from "./Components/Loading";
 import Loading2 from "./Components/Loading2";
 
 
@@ -48,7 +49,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Nav user={this.state.loggedInUser} logout={this.props.Getloggout}/>
+        <Nav user={this.state.loggedInUser} logout={this.Getloggout}/>
+
+
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route exact path='/gameinfo/:id' render ={(match)=> <SingleGameInfo {...match}/>}/>
@@ -98,15 +101,10 @@ class App extends Component {
             path="/mustplay"
             render={(match) => <MustPlay user={this.state.loggedInUser} {...match}/>}
           />
-          <Route
-            exact
-            path="/loading2"
-            render={(match) => <Loading2 user={this.state.loggedInUser} {...match}/>}
-          />
           {/* <Route exact path="/gameinfo" component={SingleGameInfo} /> */}
           {/* <LogoutRoute redirectTo='/login' /> */}
         </Switch>
-        <button onClick={this.Getloggout}>pepe se va</button>
+        {/* <button classname="angleinleft" onClick={this.Getloggout}>pepe se va</button> */}
         {/* <Home/> */}
       </div>
     );

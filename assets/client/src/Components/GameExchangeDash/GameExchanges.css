@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css?family=Cabin");
+
+.postPrevCont {
+  max-width: 60%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 10px;
+  align-items: center;
+  margin-left: 20%;
+  margin-top: 5%;
+  box-shadow: -10px 10px 30px 1px rgba(0, 0, 0, 0.75);
+  border-radius: 20px 20px 20px 20px;
+  font-family: "Cabin";
+  background: rgba(0,0,0,.5);
+  color: lavenderblush;
+}
+
+.postPrevImg {
+  border-radius: 10px;
+  box-shadow: -5px 5px 30px 1px rgba(0, 0, 0, 0.75);
+  max-width: 60%;
+  margin-top: 2%;
+  margin-bottom: 3%;
+}
+
+.postPrevTitle {
+  font-size: 24px;
+  margin-bottom: 2%;
+}
+
+.postPrevBtn{
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  background: aliceblue;
+}
+
+@keyframes bounce {
+  0%, 20%, 60%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  
+  40% {
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+  
+  80% {
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
+}
+
+.postPrevBtn:hover {
+  animation: bounce 1s;
+}
+
+.postPrevBtnNew {
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  background: aliceblue;
+  margin-top: 1%;
+}
+
+.postPrevFlex {
+
+}
+
+.scroll{
+  max-height: calc(90vh);
+  overflow-y: scroll;
+} 
