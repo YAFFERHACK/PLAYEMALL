@@ -4,6 +4,7 @@ import axios from "axios";
 import AuthService from "../../../src/auth/auth-service.js";
 import PostService from "../../auth/post-service.js";
 import './ExchangeSinglePost.css';
+import Loading from "../Loading";
 
 
 export default class SinglePost extends Component {
@@ -45,7 +46,7 @@ export default class SinglePost extends Component {
       )
     } else {
       return(
-        <h1>Loading...</h1>
+        <Loading/>
       )
     }
   }
