@@ -106,7 +106,7 @@ class App extends Component {
           {/* <Route exact path="/gameinfo" component={SingleGameInfo} /> */}
           {/* <LogoutRoute redirectTo='/login' /> */}
         </Switch>
-        <button onClick={this.Getloggout}>pepe se va</button>
+        <button classname="angleinleft" onClick={this.Getloggout}>pepe se va</button>
         {/* <Home/> */}
       </div>
     );
