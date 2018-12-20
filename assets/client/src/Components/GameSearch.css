@@ -1,0 +1,21 @@
+.gamesearch-container{
+  display:flex;
+  flex-direction:column;
+  width:50%;
+  margin:10% auto;
+  padding: 30px;
+  background: rgba(255,255,255,.8);
+  border-radius: 5px;
+  box-shadow: -10px 10px 30px 1px rgba(0, 0, 0, 0.75);
+}
+#find-button {
+  width: 30%;
+  margin: 3% auto;
+}
+hr{
+  border-width: 2px;
+}
+.dropdown-content{
+  max-height: 200px;
+  overflow-y: scroll;
+}

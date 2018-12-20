@@ -1,0 +1,19 @@
+.login-container{
+  /* border: 1px solid black; */
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 40px auto;
+  width:50%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  box-shadow: -10px 10px 30px 1px rgba(0, 0, 0, 0.75);
+  background: rgba(255,255,255,.8);
+}
+.login {
+  width: 30%;
+}
+.mb3{
+  margin-bottom:3%;
+}
