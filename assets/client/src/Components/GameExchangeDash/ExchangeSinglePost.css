@@ -13,6 +13,8 @@
   box-shadow: -10px 10px 30px 1px rgba(0, 0, 0, 0.75);
   border-radius: 20px 50px 20px 50px;
   font-family: "Cabin";
+  color: #F0F8FF;
+  background: rgba(0,0,0,.8);
 }
 
 .postComTitle {

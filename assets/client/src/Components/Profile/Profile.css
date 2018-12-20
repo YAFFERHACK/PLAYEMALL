@@ -12,7 +12,7 @@
   box-shadow: -10px 10px 30px 1px rgba(0, 0, 0, 0.75);
   border-radius: 20px 20px 20px 20px;
   font-family: "Cabin";
-  background: rgba(255,255,255,.5);
+  background: rgba(255,255,255,.8);
 }
 
 .profileImg{
@@ -23,19 +23,19 @@
 
 .profName{
   font-size: 26px;
-  color: white;
+  color: black;
   font-weight: 500;
   margin-bottom: 2%;
 }
 
 .profCity{
-  color: white;
+  color: black;
   font-size: 18px;
   margin-bottom: 2%;
 }
 
 .profPost{
-  color: white;
+  color: black;
   font-size: 18px;
   margin-bottom: 2%;
 }
@@ -49,3 +49,12 @@
   font-size: 16px;
 }
 
+.editBtn:hover
+{
+        box-shadow:
+                1px 1px #000000,
+                2px 2px #000000,
+                3px 3px #000000;
+        -webkit-transform: translateX(-3px);
+        transform: translateX(-3px);
+}

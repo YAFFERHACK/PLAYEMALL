@@ -33,7 +33,7 @@ export default class GameExchanges extends Component {
             <img className="postPrevImg" alt="imgPostSnippet" src={post.picPath} />
             <h1 className="postPrevTitle">{post.title}</h1>
             <Link to={`/completepost/${post._id}`}>
-              <button>Ver anuncio</button>
+              <button className="postPrevBtn">Ver anuncio</button>
             </Link>
             
             <hr />
@@ -44,9 +44,9 @@ export default class GameExchanges extends Component {
         // console.log(postSnippet);
       });
     }
-    return <div>
+    return <div className="scroll">
             <Link to={`/newpost`}>
-              <button>Nuevo anuncio</button>
+              <button className="postPrevBtnNew">Nuevo anuncio</button>
             </Link>
     {postSnippet}
     

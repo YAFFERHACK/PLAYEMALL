@@ -13,7 +13,8 @@
   box-shadow: -10px 10px 30px 1px rgba(0, 0, 0, 0.75);
   border-radius: 20px 20px 20px 20px;
   font-family: "Cabin";
-  background: rgba(255,255,255,.5);
+  background: rgba(0,0,0,.5);
+  color: lavenderblush;
 }
 
 .postPrevImg {
@@ -26,7 +27,50 @@
 
 .postPrevTitle {
   font-size: 24px;
+  margin-bottom: 2%;
+}
+
+.postPrevBtn{
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  background: aliceblue;
+}
+
+@keyframes bounce {
+  0%, 20%, 60%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  
+  40% {
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+  
+  80% {
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
+}
+
+.postPrevBtn:hover {
+  animation: bounce 1s;
+}
+
+.postPrevBtnNew {
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  background: aliceblue;
+  margin-top: 1%;
 }
 
 .postPrevFlex {
+
 }
+
+.scroll{
+  max-height: calc(90vh);
+  overflow-y: scroll;
+} 
