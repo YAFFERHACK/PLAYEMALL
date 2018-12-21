@@ -34,9 +34,9 @@ class Login extends Component {
     return(
       <div>
         <form className="login-container" onSubmit={this.handleFormSubmit}>
-          <label className="mb3">Username:</label>
+          <label className="mb3">Username</label>
           <input className="mb3" type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
-          <label className="mb3" >Password:</label>
+          <label className="mb3" >Password</label>
           <input className="mb3" type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
           
           <input className="login button is-link mb3" type="submit" value="Login" />

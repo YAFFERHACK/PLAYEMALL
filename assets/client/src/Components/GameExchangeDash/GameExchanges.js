@@ -28,6 +28,7 @@ export default class GameExchanges extends Component {
       console.log(this.props.post);
       postSnippet = this.state.posts.map(post => {
         return (
+          
           <div className="postPrevFlex">
           <div className="postPrevCont">
             <img className="postPrevImg" alt="imgPostSnippet" src={post.picPath} />

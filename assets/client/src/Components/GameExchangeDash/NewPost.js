@@ -50,8 +50,8 @@ export default class NewPost extends Component {
     }
     return (
       <div>
-        
         <form className="signup-container" onSubmit={this.handleFormSubmit}>
+        <img className="pokeJump" alt="" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Pokebola-pokeball-png-0.png" width="100" height="100"/>
           <h1 className="editform-title"> Nuevos anuncios</h1>
           <label className="mb3">Title</label>
           <input

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import AuthService from '../auth/auth-service';
 import { Link, Redirect } from 'react-router-dom';
-import './UserLogin/Signup.css'
-
+import './UserLogin/Signup.css';
 
 class Signup extends Component {
   constructor(props) {
@@ -54,16 +53,16 @@ class Signup extends Component {
     return (
       <div>
         <form className="signup-container" onSubmit={this.handleFormSubmit}>
-          <label className="mb3">Username:</label>
+          <label className="mb3">Username</label>
           <input className="mb3"type="text" name="username" value={this.state.username} onChange={e => this.handleChange(e)} />
 
-          <label className="mb3">Password:</label>
+          <label className="mb3">Password</label>
           <input className="mb3"type="password" name="password" value={this.state.password} onChange={e => this.handleChange(e)} />
 
           {/* <label>City:</label>
           <textarea name="city" value={this.state.city} onChange={e => this.handleChange(e)} /> */}
 
-          <label className="mb3">City:</label>
+          <label className="mb3">City</label>
           <select
             className="mb3"
             name="city"
