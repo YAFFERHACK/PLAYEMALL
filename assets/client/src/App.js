@@ -48,7 +48,6 @@ class App extends Component {
     return (
       <div className="App">
         <Nav user={this.state.loggedInUser} logout={this.Getloggout}/>
-
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route exact path='/gameinfo/:id' render ={(match)=> <SingleGameInfo {...match}/>}/>
