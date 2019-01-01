@@ -3,6 +3,7 @@ import GameFinder from '../GameFinder'
 import CollService from "../../auth/collection-service";
 import { Link } from "react-router-dom";
 import './ProfileCollection.css';
+import RemoveButton from './RemoveButton.js';
 
 export default class ProfileCollection extends Component {
 
@@ -131,20 +132,7 @@ export default class ProfileCollection extends Component {
             <div className="games-container">
               {gamesList}
             </div>
-            <div onClick={() => { this.setState({ ...this.state, deployed: !this.state.deployed }) }} className={dropDownClass}>
-              <div className="dropdown is-up">
-                <div className="dropdown-trigger">
-                  <button className="button removeColl" aria-haspopup="true" aria-controls="dropdown-menu2">
-                    <span>Remove Collection</span>
-                  </button>
-                </div>
-                <div className="dropdown-menu" id="dropdown-menu2" role="menu">
-                  <div className="dropdown-content">
-                    <button className="button is-warning" value={i} onClick={(e) => { this.deleteCollection(e) }}>Are You Sure?!</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <RemoveButton deleteCollection ={this.deleteCollection} value = {i}/>
           </div>
         )
       })
