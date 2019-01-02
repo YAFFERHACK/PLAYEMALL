@@ -74,6 +74,8 @@ export default class MustPlay extends Component {
                         <h3 className="mustPubli">{publishers}</h3>
                         <h3 className="mustRate">{rating}</h3>
                     </div>
+
+                    //<Link to={`/gameinfo/${game.idIgdb}`}><h3>{game.name}</h3></Link> BASE THE LINKS ON THIS
                 )
             })
             
