@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Post = require('../models/PostModel/PostModel');
+const Post = require('../models/PostModel');
 const postRouter  = express.Router();
-const User = require("../models/User/User.js");
+const User = require("../models/User.js");
 const axios = require('axios');
 require('dotenv').config();
 const parser = require("../config/cloudinary");

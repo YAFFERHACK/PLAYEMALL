@@ -6,11 +6,9 @@
 const mongoose = require("mongoose");
 require('dotenv').config();
 const bcrypt = require("bcrypt");
-const User = require("../models/User/User.js");
-const Post = require("../models/PostModel/PostModel");
-const Comment = require("../models/CommentModel/CommentModel");
-// const SingleGame = require("../models/SingleGameModel/SingleGameModel");
-// const Collection = require("../models/CollectionModel/CollectionModel");
+const User = require("../models/User.js");
+const Post = require("../models/PostModel");
+const Comment = require("../models/CommentModel");
 
 
 

@@ -1,7 +1,7 @@
 const express = require("express");
 const passport = require('passport');
 const router = express.Router();
-const User = require("../models/User/User.js");
+const User = require("../models/User.js");
 const parser = require("../config/cloudinary");
 const mongoose = require('mongoose');
 
@@ -10,8 +10,8 @@ require('dotenv').config();
 const igdb = require('igdb-api-node').default;
 const client = igdb(process.env.IGDB_KEY);
 
-const Collection = require('../models/CollectionModel/CollectionModel.js');
-const Game = require('../models/SingleGameModel/SingleGameModel.js');
+const Collection = require('../models/CollectionModel.js');
+const Game = require('../models/SingleGameModel.js');
 
 
 

@@ -1,8 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-// const Post = require("../PostModel/PostModel.js")
-// const Comment = require("../CommentModel/CommentModel.js")
-// const Collection = require("../CollectionModel/CollectionModel.js")
 
 const userSchema = new Schema(
   {
