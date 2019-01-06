@@ -1,71 +1,67 @@
-import React, { Component } from "react";
-import AuthService from "../../auth/auth-service";
-import { Link, Redirect } from "react-router-dom";
+import React, { Component } from 'react';
+import AuthService from '../../auth/auth-service';
+import { Link, Redirect } from 'react-router-dom';
+import './Signup.css';
 
 class Signup extends Component {
   constructor(props) {
     super(props);
-    this.state = { username: "", password: "", city: "", redirect: false };
+    this.state = { username: '', password: '', city: '', photo: '', redirect: false };
     this.service = new AuthService();
   }
 
-  handleFormSubmit = event => {
+  handleFormSubmit = (event) => {
     event.preventDefault();
     const username = this.state.username;
     const password = this.state.password;
     const city = this.state.city;
-    // const course = this.state.course;
+    const photo = this.state.photo;
+    console.log(photo)
 
-    this.service
-      .signup(username, password, city)
+
+    this.service.signup(username, password, city, photo)
       .then(response => {
         this.setState({
           ...this.state,
           username: "",
           password: "",
           city: "",
+          photo: "",
           redirect: true
         });
-        this.props.getUser(response);
+        this.props.getUser(response)
 
-        // this.props.getUser(response)
       })
-      .catch(error => console.log(error));
-  };
+      .catch(error => console.log(error))
+  }
 
-  handleChange = event => {
+  handleChange = (event) => {
     const { name, value } = event.target;
-    this.setState({ [name]: value });
-  };
+    if (name === "photo") {
+      this.setState({ ...this.state, photo: event.target.files[0] })
+    } else {
+      this.setState({ ...this.state, [name]: value });
+    }
+  }
+
 
   render() {
     if (this.state && this.state.redirect) {
-      return <Redirect to="/" />;
+      return <Redirect to="/" />
     }
 
     return (
       <div>
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
-          <input
-            className="fieldsSign"
-            type="text"
-            name="username"
-            value={this.state.username}
-            onChange={e => this.handleChange(e)}
-          />
+        <form className="signup-container" onSubmit={this.handleFormSubmit}>
+          <label className="mb3">Username</label>
+          <input className="mb3"type="text" name="username" value={this.state.username} onChange={e => this.handleChange(e)} />
 
-          <label>Password:</label>
-          <input
-            className="fieldsSign" 
-            type="text"
-            name="password"
-            value={this.state.password}
-            onChange={e => this.handleChange(e)}
-          />
+          <label className="mb3">Password</label>
+          <input className="mb3"type="password" name="password" placeholder="7 characters minimum" value={this.state.password} onChange={e => this.handleChange(e)} />
 
-          <label>City:</label>
+          <label className="mb3">City</label>
           <select
+            className="mb3"
             name="city"
             value={this.state.city}
             onChange={e => this.handleChange(e)}
@@ -126,19 +122,21 @@ class Signup extends Component {
             <option>Zaragoza</option>
           </select>
 
-          {/* <label>Course:</label>
-          <textarea name="course" value={this.state.course} onChange={ e => this.handleChange(e)} /> */}
+          <input className="mb3" type="file" name="photo" onChange={(e) => this.handleChange(e)} /> <br />
 
-          <input type="submit" value="Signup" />
+          <input className="submit button is-link" type="submit" value="Signup" />
         </form>
 
-        <p className="lastSign">
-          Already have account? Don't be shy!
-          <Link to={"/login"}> Login</Link>
+        <p className="mb3 lastSign"> Already have account?
+            <Link to={"/login"}> Login</Link>
         </p>
+
       </div>
-    );
+    )
   }
+
+
+
 }
 
 export default Signup;

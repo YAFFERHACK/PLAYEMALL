@@ -3,7 +3,7 @@ import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import Home from "./Components/Home";
 import Login from "./Components/UserLogin/Login";
-import Signup from "./Components/Signup";
+import Signup from "./Components/UserLogin/Signup";
 import Profile from "./Components/Profile/Profile";
 import SingleGameInfo from "./Components/SingleGameInfo";
 import ProfileEdit from "./Components/Profile/ProfileEdit";
