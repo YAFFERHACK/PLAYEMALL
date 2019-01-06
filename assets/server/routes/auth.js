@@ -57,12 +57,12 @@ router.post('/signup', parser.single("photo"), (req, res, next) => {
         return;
     }
 
-    if (password.length < 7) {
+    if (password.length < 3) {
         res
             .status(400)
             .json({
                 message:
-                    "Please make your password at least 8 characters long for security purposes."
+                    "Please make your password at least 3 characters long for security purposes."
             });
         return;
     }
