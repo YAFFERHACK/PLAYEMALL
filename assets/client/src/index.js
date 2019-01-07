@@ -5,12 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bulma/css/bulma.css';
 
-// import { Switch, Route, Link } from "react-router-dom";
-
 import {BrowserRouter as Router} from 'react-router-dom' 
-
-
-
 
 ReactDOM.render(<Router><App /></Router>, document.getElementById('root'));
 

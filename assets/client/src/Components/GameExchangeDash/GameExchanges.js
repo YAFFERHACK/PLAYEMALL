@@ -28,29 +28,28 @@ export default class GameExchanges extends Component {
       console.log(this.props.post);
       postSnippet = this.state.posts.map(post => {
         return (
-          
+
           <div className="postPrevFlex">
-          <div className="postPrevCont">
-            <img className="postPrevImg" alt="imgPostSnippet" src={post.picPath} />
-            <h1 className="postPrevTitle">{post.title}</h1>
-            <Link to={`/completepost/${post._id}`}>
-              <button className="postPrevBtn">Ver anuncio</button>
-            </Link>
-            
-            <hr />
-            
-          </div>
+            <div className="postPrevCont">
+              <img className="postPrevImg" alt="imgPostSnippet" src={post.picPath} />
+              <h1 className="postPrevTitle">{post.title}</h1>
+              <Link to={`/completepost/${post._id}`}>
+                <button className="postPrevBtn">Ver anuncio</button>
+              </Link>
+
+              <hr />
+
+            </div>
           </div>
         );
-        // console.log(postSnippet);
       });
     }
     return <div className="scroll">
-            <Link to={`/newpost`}>
-              <button className="postPrevBtnNew">Nuevo anuncio</button>
-            </Link>
-    {postSnippet}
-    
+      <Link to={`/newpost`}>
+        <button className="postPrevBtnNew">Nuevo anuncio</button>
+      </Link>
+      {postSnippet}
+
     </div>;
   }
 }

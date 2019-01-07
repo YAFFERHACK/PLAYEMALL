@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import AuthService from "../auth/auth-service";
-import '../Nav.css'
+import './Nav.css'
 import App from '../App'
 
 
@@ -21,16 +21,6 @@ export default class Nav extends Component {
     } else {
       user =""
     }
-
-    // let btn =""
-    // if (this.props.user !== null && this.props.user !== undefined) {
-    //   btn = (
-        
-    //   )
-    // } else {
-    //   btn = (
-    //   )
-    // }
     
     return (
       <div>
@@ -79,9 +69,7 @@ export default class Nav extends Component {
                 {user}
                 <p className="control">
              
-                {/* <a class="navbar-link">
-          <img class="navImg" src={{user.imgPath}}> {{user.username}}/>
-                    </a> */}
+                
                    {user ? 
                    <a  href="/logout">
                    <button className="button is-info separation2" onClick={this.props.logout}>Logout</button>

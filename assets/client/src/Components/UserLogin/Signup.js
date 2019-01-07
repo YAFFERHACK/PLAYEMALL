@@ -16,7 +16,6 @@ class Signup extends Component {
     const password = this.state.password;
     const city = this.state.city;
     const photo = this.state.photo;
-    console.log(photo)
 
 
     this.service.signup(username, password, city, photo)

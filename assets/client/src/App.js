@@ -29,7 +29,6 @@ class App extends Component {
     this.auth
       .loggedin()
       .then(user => {
-        // console.log(user);
         this.setState({ ...this.state, loggedInUser: user })});
   };
 
@@ -97,11 +96,7 @@ class App extends Component {
             path="/mustplay"
             render={(match) => <MustPlay user={this.state.loggedInUser} {...match}/>}
           />
-          {/* <Route exact path="/gameinfo" component={SingleGameInfo} /> */}
-          {/* <LogoutRoute redirectTo='/login' /> */}
         </Switch>
-        {/* <button classname="angleinleft" onClick={this.Getloggout}>pepe se va</button> */}
-        {/* <Home/> */}
       </div>
     );
   }
