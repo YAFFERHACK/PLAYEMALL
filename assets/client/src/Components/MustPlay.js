@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CollService from "../auth/collection-service";
 import Loading from './Loading';
 import './MustPlay.css';
+import { Link } from "react-router-dom";
 
 
 export default class MustPlay extends Component {
@@ -67,7 +68,7 @@ export default class MustPlay extends Component {
                 return (
                     <div className="mustCont">
                         <img className="mustImg" src={cover} alt="gamecover" />
-                        <h1 className="mustName">{game.name}</h1>
+                        <Link to={`/gameinfo/${game.id}`}><h1 className="mustName">{game.name}</h1></Link>
                         <h3 className="mustPubli">{publishers}</h3>
                         <h3 className="mustRate">{rating}</h3>
                     </div>
