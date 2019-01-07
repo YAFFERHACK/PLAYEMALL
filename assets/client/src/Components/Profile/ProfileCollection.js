@@ -26,27 +26,25 @@ export default class ProfileCollection extends Component {
 
   createCollection = () => {
     const name = this.state.collName;
-    console.log(name);
+    
     this.service.newCollection(name)
       .then(() => this.getCollectionData())
       .then(() => {
-        this.setState({ ...this.state, collName: "" }, function () { console.log(this.state.collName); })
+        this.setState({ ...this.state, collName: "" })
       })
       .catch((err) => {
-        console.log(err);
+        return err
       })
   }
 
   deleteCollection = (event) => {
-    const { value } = event.target;
-    console.log(event.target);
-    console.log(this.state.collections);
+    const { value } = event.target;    
     let id = this.state.collections[value]._id;
 
     this.service.removeCollection(id)
       .then(() => this.getCollectionData())
       .catch((err) => {
-        console.log(err)
+        return err
       })
 
   }
@@ -57,7 +55,7 @@ export default class ProfileCollection extends Component {
     this.service.userCollections()
       .then((populatedUser) => {
         if (this.props.user) {
-          console.log(populatedUser)
+          
           this.setState({ ...this.state, collections: populatedUser.collections })
         }
       })
@@ -67,26 +65,25 @@ export default class ProfileCollection extends Component {
 
     this.service.removeGame(collectionId, gameId)
       .then((response) => {
-        // console.log(response)
+        
         return response
       })
       .then(() => this.getCollectionData())
       .catch((err) => {
-        console.log(err);
+        return err;
       })
   }
 
   addGameHandler = (collectionId, game) => {
-    // console.log(collectionId);
-    // console.log(game);
+    
     this.service.addGame(collectionId, game)
       .then((response) => {
-        console.log(response)
+        
         return response
       })
       .then(() => this.getCollectionData())
       .catch((err) => {
-        console.log(err);
+        return err
       })
   }
 

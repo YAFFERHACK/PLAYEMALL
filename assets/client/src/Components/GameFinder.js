@@ -23,14 +23,11 @@ export default class GameFinder extends React.Component {
 
     axios.get(`${process.env.REACT_APP_API_URL}/dbroutes/gamesearch/${this.state.searchField}`)
       .then((response) => {
-        console.log('findHandler axios then')
-        this.setState({ ...this.state, games: [...response.data], deployed: true }, function () {
-          console.log(this.state.games);
-        });
+        
+        this.setState({ ...this.state, games: [...response.data], deployed: true });
       })
       .catch((err) => {
-        console.log('findHandler axios catch');
-        console.log(err);
+        return err
       })
 
   }

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import AuthService from "../auth/auth-service";
 import './Nav.css'
-import App from '../App'
+
 
 
 export default class Nav extends Component {

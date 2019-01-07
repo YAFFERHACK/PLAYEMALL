@@ -10,12 +10,12 @@ export default class SingleGameInfo extends Component {
     }
 
     getGameInfo = () => {
-        console.log(this.props.match.params);
+        
         const { params } = this.props.match;
-        console.log(params);
+        
         axios.get(`${process.env.REACT_APP_API_URL}/dbroutes/gameinfo/${params.id}`)
             .then(responseFromApi => {
-                console.log(responseFromApi.data);
+                
                 this.setState({
                     gameInfo: responseFromApi.data
                 });

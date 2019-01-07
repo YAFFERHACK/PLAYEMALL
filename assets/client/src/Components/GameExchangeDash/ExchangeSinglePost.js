@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
-import axios from "axios";
-import AuthService from "../../../src/auth/auth-service.js";
 import PostService from "../../auth/post-service.js";
 import './ExchangeSinglePost.css';
 import Loading from "../Loading";
@@ -17,14 +15,12 @@ export default class SinglePost extends Component {
   }
 
   componentDidMount = () => {
-    console.log(this.props.match.params.id)
+    
     this.service.dashboardOne(this.props.match.params.id).then(response => {
-      console.log(response);
-      this.setState({posts: response}, () => {
-        console.log(this.state)
-      })
+      
+      this.setState({posts: response})
     })
-    .catch(console.log)
+    .catch((err)=>err)
   };
 
   render() {

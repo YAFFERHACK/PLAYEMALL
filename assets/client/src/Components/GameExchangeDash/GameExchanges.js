@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
-import axios from "axios";
-import AuthService from "../../../src/auth/auth-service.js";
+import { Link } from "react-router-dom";
 import PostService from "../../auth/post-service.js";
 import './GameExchanges.css';
 
@@ -17,7 +15,6 @@ export default class GameExchanges extends Component {
 
   componentDidMount = () => {
     this.service.dashboardShowPost().then(response => {
-      console.log(response);
       this.setState({ ...this.state, posts: response });
     });
   };
@@ -25,7 +22,7 @@ export default class GameExchanges extends Component {
   render() {
     let postSnippet = "";
     if (this.state.posts !== null) {
-      console.log(this.props.post);
+  
       postSnippet = this.state.posts.map(post => {
         return (
 

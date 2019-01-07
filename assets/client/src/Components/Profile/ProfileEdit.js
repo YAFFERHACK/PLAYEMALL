@@ -33,7 +33,7 @@ export default class ProfileEdit extends Component {
         // this.props.getUser(response);
 
       })
-      .catch(error => console.log(error));
+      .catch(error => error);
   };
 
   handleChange = event => {
@@ -48,7 +48,7 @@ export default class ProfileEdit extends Component {
     if (this.state && this.state.redirect) {
       return <Redirect to="/profile" />;
     }
-    console.log(this.props.user)
+    
     return (
       <div>
 

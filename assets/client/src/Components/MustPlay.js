@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import CollService from "../auth/collection-service";
-import axios from "axios";
 import Loading from './Loading';
 import './MustPlay.css';
 
@@ -22,8 +21,6 @@ export default class MustPlay extends Component {
         this.service.mustPlay(fields)
             .then((response) => {
                 this.setState({ ...this.state, gameInfo: response })
-                console.log(fields)
-                console.log(this.state)
             })
     };
 
@@ -74,14 +71,11 @@ export default class MustPlay extends Component {
                         <h3 className="mustPubli">{publishers}</h3>
                         <h3 className="mustRate">{rating}</h3>
                     </div>
-
-                    //<Link to={`/gameinfo/${game.idIgdb}`}><h3>{game.name}</h3></Link> BASE THE LINKS ON THIS
                 )
             })
             
             return (
                 <div className="mustBig">
-                {/* <img alt="" src="./images/mustplay.png"/> */}
 
                     {gamecards}
 
