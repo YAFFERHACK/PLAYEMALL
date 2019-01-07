@@ -95,9 +95,6 @@ export default class ProfileCollection extends Component {
 
   render() {
 
-    let dropDownClass = "dropdown";
-    if (this.state.deployed) { dropDownClass = "dropdown is-active" }
-
     if (this.state.collections !== null && this.state.collections !== undefined) {
       this.collectionList = this.state.collections.map((collection, i) => {
         let gamesList = collection.games.map((game, i) => {

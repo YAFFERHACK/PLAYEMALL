@@ -4,9 +4,7 @@ import './Nav.css'
 
 
 export default class Nav extends Component {
-  constructor(props){
-    super(props);
-  }
+  
   
   render() {
     let user=""
@@ -25,7 +23,7 @@ export default class Nav extends Component {
         <div className="Nav">
         <nav className="navbar is-dark">
           <div className="navbar-brand">
-            <a className="navbar-item navLogo" href="https://i.imgur.com/ANsUGQw.gif" target="_blank" rel="">
+            <a className="navbar-item navLogo" href="https://i.imgur.com/ANsUGQw.gif" target="_blank" rel="noopener noreferrer">
               {" "}
               <img
                 src="https://okapy.es/image/cache/catalog/customer_designs/33-90ccb12f14fe5363fd0d270ebddec5ce-228x228.png"
@@ -65,7 +63,7 @@ export default class Nav extends Component {
             <div className="navbar-item">
               <div className="field is-grouped">
                 {user}
-                <p className="control">
+                <div className="control">
              
                 
                    {user ? 
@@ -85,7 +83,7 @@ export default class Nav extends Component {
                    }
                    
                   
-                </p>
+                </div>
                 <p className="control" />
               </div>
             </div>

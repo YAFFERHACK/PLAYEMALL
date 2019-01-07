@@ -39,7 +39,7 @@ router.get('/igdbgames', (req, res) => {
 })
 
 router.post('/mustplay', (req, res) => {
-    let {fields} = req.body;
+    let { fields } = req.body;
     console.log(fields);
     client.games({
         ids: [...fields],
@@ -48,7 +48,7 @@ router.post('/mustplay', (req, res) => {
         //     'release_dates.date-lt': '2015-01-01',
         //     'total_rating-gte':80
         // },
-        fields: ['id', 'name', 'developers', 'publishers', 'total_rating', 'url', 'first_release_date','cover'],
+        fields: ['id', 'name', 'developers', 'publishers', 'total_rating', 'url', 'first_release_date', 'cover'],
         expand: ['developers', 'publishers'],
         limit: 20,
         search: 'battlefield',
